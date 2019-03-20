@@ -10,20 +10,17 @@
       <button id="style" onclick="js_new_style()">New style</button>
       <script>
       document.getElementById('text').style.fontFamily = "Helvetica Neue";
-      document.getElementById('text').style.fontSize = 20
 
       function js_new_style() {
         if (document.getElementById('style').innerHTML == "New style") {
           document.getElementById('text').style.color = "blue"
           document.getElementById('text').style.fontFamily = "Comic Sans MS"
-          document.getElementById('text').style.fontSize = 30
-
+          
           document.getElementById('style').innerHTML = "Previous"
         } else {
           document.getElementById('text').style.color = "black"
           document.getElementById('text').style.fontFamily = "Helvetica Neue"
-          document.getElementById('text').style.fontSize = 20
-
+          
           document.getElementById('style').innerHTML = "New style"
         }
 
