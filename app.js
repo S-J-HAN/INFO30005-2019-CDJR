@@ -3,20 +3,23 @@ var app = express();
 var passport = require('passport');
 var localStrategy = require('passport-local');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var User = require('./models/user');
 var Photo = require('./models/photo');
 
 
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(flash());
+app.use(methodOverride('_method'));
 
 //set up database
 require('./models/db.js');
+
 var indexRoutes = require('./routers/index.js');
 var photoRoutes = require('./routers/photo.js');
 

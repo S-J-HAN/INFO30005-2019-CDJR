@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+<main>
+    <div class="container">
+    <a href="/photo/new">Create new photo!</a><br>
+        <% photos.forEach(function(photo){ %>
+                <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
+                
+                <img class="card-img-top" src="<%= photo.image %>">
+        <% }) %>
+    </div>
+</main>
+
+
+<% include ../partials/footer %>

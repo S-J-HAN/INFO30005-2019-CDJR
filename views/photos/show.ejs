@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+<div class="container">
+    <a href="/photo">back</a>
+    <h4><%= photo.name %></h4>
+    <form action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
+        <button type="">Delete</button>
+    </form>
+    <p><%= photo.description %></p>
+    <img class="card-img-top" src="<%= photo.image %>">
+</div>
+
+<% include ../partials/footer %>
