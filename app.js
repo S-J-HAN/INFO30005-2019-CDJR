@@ -4,6 +4,7 @@ var passport = require('passport');
 var localStrategy = require('passport-local');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var flash = require('connect-flash');
 var User = require('./models/user');
 var Photo = require('./models/photo');
 var Comment = require('./models/comment');
