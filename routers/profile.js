@@ -7,11 +7,6 @@ var middleware = require('../middleware');
 //user's profile page
 router.get('/:username', middleware.isLoggedIn, function (req, res) {
     User.findOne({username: req.params.username}, function(err, foundUser){
-        // if(!err){
-        //     res.render('profile/profile', {currentUser: foundUser});
-        // }else{
-        //     res.sendStatus(404);
-        // }
         Photo.find({
             'author.username': req.params.username
         }, function (err, foundPhoto) {
@@ -26,15 +21,5 @@ router.get('/:username', middleware.isLoggedIn, function (req, res) {
         })
     })
 });
-
-router.get('/:username/work', middleware.isLoggedIn, function(req, res){
-    Photo.find({'author.username': req.params.username}, function(err, foundPhoto){
-        if(!err){
-            res.send(foundPhoto);
-        }else{
-            res.send(404);
-        }
-    })
-})
 
 module.exports = router;

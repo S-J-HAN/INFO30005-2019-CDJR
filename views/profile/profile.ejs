@@ -9,7 +9,6 @@
             <h3>Previous Work</h3>
             <% photos.forEach(function(photo){ %>
                 <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
-                
                 <img class="card-img-top" src="<%= photo.image %>">
             <% }) %>
         </div>
