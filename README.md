@@ -1,2 +1,3 @@
-# INFO30005-Project
-Project repo for CDJR Tech. group
+# INFO30005 - Webproj
+## Group: CDJR Technology
+A website for cultivating people's creativity

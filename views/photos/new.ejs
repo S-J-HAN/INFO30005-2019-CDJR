@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+<main>
+    <h1>Create photo</h1>
+    <form action="/photo" method="POST" >
+        <input type="text" name="name" placeholder="Image title">
+        <input type="text" name="description" placeholder="Image description">
+        <input type="text" name="image" placeholder="Image url">
+        <button type="">Create!</button>
+    </form>
+    <a href="/photo">Back</a>
+</main>
+<% include ../partials/footer %>
