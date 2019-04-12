@@ -85,6 +85,21 @@ var deleteOnePhoto = function(req, res){
     })
 }
 
+var findAllPhotosByUsername = function (req, res) {
+    User.findOne({username: req.params.username}, function (err, foundUser) {
+        Photo.find({'author.username': req.params.username}, function (err, foundPhoto) {
+            if (!err) {
+                res.render('profile/profile', {
+                    currentUser: foundUser,
+                    photos: foundPhoto
+                });
+            } else {
+                res.send(404);
+            }
+        });
+    });
+}
+
 // -------------Comment Method-----------
 var createComment = function(req, res){
     Photo.findById(req.params.id, function(err, photo){
@@ -138,6 +153,7 @@ module.exports.findAllPhotos = findAllPhotos;
 module.exports.findOnePhoto = findOnePhoto;
 module.exports.updateOnePhoto = updateOnePhoto;
 module.exports.deleteOnePhoto = deleteOnePhoto;
+module.exports.findAllPhotosByUsername = findAllPhotosByUsername;
 module.exports.createComment = createComment;
 module.exports.updateComment = updateComment;
 module.exports.deleteComment = deleteComment;
