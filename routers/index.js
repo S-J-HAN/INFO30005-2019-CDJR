@@ -26,7 +26,7 @@ router.get('/login', function (req, res) {
 //handling login logic
 //middle check before handler
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/photo',
     failureRedirect: '/login',
     failureFlash: true
 }), function(req, res){
@@ -37,7 +37,7 @@ router.get('/logout', function(req, res){
     //handle with passport
     req.logout();
     req.flash("success", "Logged you out");
-    res.redirect('/');
+    res.redirect('back');
 })
 
 module.exports = router;

@@ -2,11 +2,31 @@
 <div class="container">
     <a href="/photo">back</a>
     <h4><%= photo.name %></h4>
-    <form action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
-        <button type="">Delete</button>
-    </form>
+
+    <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
+        <a class="btn btn-primary" href="/photo/<%= photo._id %>/edit">Edit</a>
+        <form id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    <% } %>
+
     <p><%= photo.description %></p>
+    <p><em>Submitted By <%= photo.author.username %></em></p>
     <img class="card-img-top" src="<%= photo.image %>">
+
+    <a href="/photo/<%= photo._id %>/comment/new">Add new comment</a>
+    <hr>
+    <% photo.comments.forEach(function(comment){ %>
+        <a href="/profile/<%= comment.author.username %>"><%= comment.author.username %></a>
+        <p><%= comment.text %></p>
+        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+            <a href="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit">Edit</a>
+            <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete">
+            </form>
+        <% } %>
+    <% })%>
+
 </div>
 
 <% include ../partials/footer %>

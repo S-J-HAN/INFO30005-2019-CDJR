@@ -7,6 +7,7 @@ var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var User = require('./models/user');
 var Photo = require('./models/photo');
+var Comment = require('./models/comment');
 
 
 app.use(bodyParser.urlencoded({
@@ -22,6 +23,8 @@ require('./models/db.js');
 
 var indexRoutes = require('./routers/index.js');
 var photoRoutes = require('./routers/photo.js');
+var commentRoutes = require('./routers/comment.js')
+var profileRoutes = require('./routers/profile.js');
 
 //passport config
 app.use(require('express-session')({
@@ -45,6 +48,8 @@ app.use(function(req, res, next){
 
 app.use('/', indexRoutes);
 app.use('/photo', photoRoutes);
+app.use('/photo/:id/comment', commentRoutes);
+app.use('/profile', profileRoutes);
 
 app.listen(process.env.PORT||3000, process.env.IP, function(req, res){
     console.log('server is runnning!!');

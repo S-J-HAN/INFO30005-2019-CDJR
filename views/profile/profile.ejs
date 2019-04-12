@@ -1,12 +1,16 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
     <main>
         <div class="container">
             <h1><%= currentUser.username %>'s Profile page</h1>
-            <p>Do commodo fugiat nisi cupidatat labore ex consequat. Proident sit Lorem dolore eiusmod nostrud velit qui. Qui veniam id velit velit nulla aliqua pariatur commodo exercitation pariatur qui dolor. Cupidatat duis nostrud laboris aliquip minim id proident excepteur exercitation. Eu officia tempor occaecat adipisicing adipisicing pariatur ut aliqua ut tempor laboris.
-
-Nisi reprehenderit exercitation exercitation Lorem adipisicing mollit ad do cupidatat sint. Mollit consectetur ad exercitation anim. Anim Lorem eiusmod culpa Lorem esse qui et.
-
-Commodo qui esse amet in velit non magna aliqua reprehenderit commodo anim ut exercitation. Amet cillum incididunt eu commodo incididunt eu. Nostrud in do ullamco deserunt consectetur voluptate magna irure irure nisi velit exercitation.</p>
+            <li><strong>Age: <%= currentUser.age %></strong></li>
+            <li><strong>City: <%= currentUser.city %> </strong></li>
+            <li><strong>Contact: <%= currentUser.email %> </strong></li>
+            
+            <h3>Previous Work</h3>
+            <% photos.forEach(function(photo){ %>
+                <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
+                <img class="card-img-top" src="<%= photo.image %>">
+            <% }) %>
         </div>
     </main>
-<% include ./partials/footer %>
+<% include ../partials/footer %>
