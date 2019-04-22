@@ -1,0 +1,48 @@
+body{
+    background: #f9f7f7;
+    font-family: 'Raleway', sans-serif;
+}
+
+#loginForm{
+    .loginBox{
+        border: 2px solid #3f72af;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        .submitButton {
+            margin-top: 2rem;
+            background-color: transparent;
+            text-align: center;
+            button{
+                background-color: #3f72af;
+                border: #3f72af;
+                transition: box-shadow 0.3s;
+            }
+            button:hover{
+                box-shadow: 2px 2px #112d4e;
+                
+            }
+        }
+    }
+}
+
+#registerForm {
+    .registerBox {
+        border: 2px solid #3f72af;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+        .submitButton {
+            margin-top: 1.2rem;
+            background-color: transparent;
+            text-align: center;
+
+            button {
+                background-color: #3f72af;
+                border: #3f72af;
+                transition: box-shadow 0.3s;
+            }
+
+            button:hover {
+                box-shadow: 2px 2px #112d4e;
+            }
+        }
+    }
+}

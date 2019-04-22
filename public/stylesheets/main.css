@@ -1,0 +1,31 @@
+body {
+  background: #f9f7f7;
+  font-family: 'Raleway', sans-serif; }
+
+#loginForm .loginBox {
+  border: 2px solid #3f72af;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+  #loginForm .loginBox .submitButton {
+    margin-top: 2rem;
+    background-color: transparent;
+    text-align: center; }
+    #loginForm .loginBox .submitButton button {
+      background-color: #3f72af;
+      border: #3f72af;
+      transition: box-shadow 0.3s; }
+    #loginForm .loginBox .submitButton button:hover {
+      box-shadow: 2px 2px #112d4e; }
+
+#registerForm .registerBox {
+  border: 2px solid #3f72af;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+  #registerForm .registerBox .submitButton {
+    margin-top: 1.2rem;
+    background-color: transparent;
+    text-align: center; }
+    #registerForm .registerBox .submitButton button {
+      background-color: #3f72af;
+      border: #3f72af;
+      transition: box-shadow 0.3s; }
+    #registerForm .registerBox .submitButton button:hover {
+      box-shadow: 2px 2px #112d4e; }
