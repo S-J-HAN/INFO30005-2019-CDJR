@@ -1,0 +1,192 @@
+.show-photo {
+  width: 100vw;
+  height: auto;
+
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  display: flex;
+}
+
+#show-photo {
+  width: auto;
+  height: 80vh;
+  max-width: 60vw;
+  margin-left: 20px;
+  object-fit: cover;
+
+  background-color: black;
+
+  border-radius: 5px;
+  position: relative;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+
+  animation-name: loadPhoto;
+  animation-duration: 0.7s;
+}
+
+#show-photo-discussion {
+  float: left;
+  width: auto;
+  flex: 1;
+  display: block;
+  padding-left: 30px;
+  padding-right: 20px;
+
+  word-wrap: break-word;
+
+  animation-name: loadDescription;
+  animation-duration: 0.7s;
+  animation-delay: 0.1s;
+}
+
+#show-photo-title {
+  font-family: Futura;
+  font-size: 30px;
+
+  word-wrap: break-word;
+
+  width: inherit;
+}
+
+#show-photo-description {
+  font-family: Helvetica;
+  font-size: 14px;
+
+  margin-right: 20px;
+  margin-top: 5px;
+
+  word-wrap: break-word;
+  word-break: break-all;
+
+  width: inherit;
+  height: auto;
+}
+
+#photo-block {
+  float: left;
+}
+
+#edit-button {
+  float: left;
+  margin-right: 5px;
+}
+
+#delete-button {
+  float: left;
+}
+
+#buttons {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+#back-button {
+  margin-left: 20px;
+  padding: 10px;
+
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Helvetica;
+
+  color: white;
+  background-color: #112d4e;
+}
+
+#back-button:hover {
+  color: #3f72af;
+}
+
+.container.show-photo {
+  display: block;
+}
+
+#comment-username {
+  font-family: Futura;
+  font-size: 18px;
+
+  color: black;
+
+  text-decoration: none;
+}
+
+#comment-username:hover {
+  color: #112d4e;
+}
+
+#comment-text {
+  font-family: Helvetica;
+  font-size: 15px;
+}
+
+.user-comment-header {
+  display: flex;
+}
+
+.user-alter-comment {
+  position: absolute;
+  right: 0;
+  display: flex;
+}
+
+#delete-comment {
+  margin-right: 20px;
+
+  font-family: Helvetica;
+
+  color: white;
+  background-color: #112d4e;
+
+  border-radius: 5px;
+  border-width: 0;
+}
+
+#edit-comment {
+  margin-right: 10px;
+
+  font-family: Helvetica;
+
+  padding-left: 5px;
+  padding-right: 5px;
+
+  text-decoration: none;
+
+  color: white;
+  background-color: #3f72af;
+
+  border-radius: 5px;
+  border-width: 0;
+}
+
+#delete-comment:hover {
+  color: #dbe2ef;
+}
+
+#edit-comment:hover {
+  color: #dbe2ef;
+}
+
+#post-comment {
+  display: block;
+  width: inherit;
+}
+
+#input-comment {
+  width: inherit;
+}
+
+@keyframes loadPhoto {
+  from {margin-top: 50px;
+        opacity: 0;}
+  to {margin-top: 0px;
+        opacity: 1;}
+}
+
+@keyframes loadDescription {
+  from {margin-top: 50px;
+        opacity: 0;}
+  to {margin-top: 0px;
+        opacity: 1;}
+}

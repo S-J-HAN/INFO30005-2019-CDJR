@@ -1,0 +1,50 @@
+.gallery {
+  width: 70%;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  display: inline-block;
+
+  float: left;
+
+  animation-name: loadGallery;
+  animation-duration: 1s;
+}
+
+.imageRow {
+  padding-bottom: 10px;
+  width: 850px;
+}
+
+.image {
+  vertical-align: middle;
+
+  object-fit: cover;
+
+  width: 200px;
+  height: 300px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin: auto;
+  margin-bottom: 15px;
+  margin-right: 10px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.image:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+@keyframes loadGallery {
+  from {margin-top: 100px;
+        opacity: 0;}
+  to {margin-top: 30px;
+        opacity: 1;}
+}

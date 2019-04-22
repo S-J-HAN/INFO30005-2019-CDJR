@@ -1,0 +1,51 @@
+.profileInformation {
+  width: 25%;
+
+  padding: 10px;
+
+  float: left;
+  margin-top: 30px;
+  margin-left: 40px;
+
+  animation-name: loadInformation;
+  animation-duration: 0.5s;
+}
+
+.profileText {
+  font-family: Helvetica;
+  font-size: 15px;
+  padding-right: 20px;
+
+  color: black;
+}
+
+.profileHeader {
+  font-family: Futura;
+  font-size: 20px;
+  font-weight: 500;
+
+  color: black;
+}
+
+.username {
+  font-family: Futura;
+  font-size: 50px;
+  font-weight: normal;
+
+  color: black;
+}
+
+.profilePage {
+  margin-top: 15px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+}
+
+@keyframes loadInformation {
+  from {margin-top: 100px;
+        opacity: 0;}
+  to {margin-top: 30px;
+        opacity: 1;}
+}
