@@ -3,6 +3,7 @@ var User = mongoose.model('User');
 var passport = require('passport');
 var Photo = mongoose.model('Photo');
 var Comment = mongoose.model('Comment');
+var moment = require('moment');
 
 // ----------User method-------------
 var createUser = function(req, res){
@@ -58,7 +59,7 @@ var findAllPhotos = function (req, res) {
 var findOnePhoto = function(req, res){
     Photo.findById(req.params.id).populate('comments').exec(function(err, foundPhoto){
         if(!err){
-            res.render('photos/show', {photo: foundPhoto})
+            res.render('photos/show', {photo: foundPhoto, moment: moment})
         }else{
             res.sendStatus(404);
         }

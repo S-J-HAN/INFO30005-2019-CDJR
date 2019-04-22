@@ -11,7 +11,11 @@
     <% } %>
 
     <p><%= photo.description %></p>
+
+    
     <p><em>Submitted By <%= photo.author.username %></em></p>
+    <p>Created on <%= moment(photo.postAt).format('LL') %></p>
+    
     <img class="card-img-top" src="<%= photo.image %>">
 
     <a href="/photo/<%= photo._id %>/comment/new">Add new comment</a>
