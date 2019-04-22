@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dawer</title>
+    <link rel="stylesheet" type="text/css" href="http://static.cnprosco.cn/dawer/static/style.css">
+
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <style type="text/css">
+        @font-face {
+            /* font-properties */
+            font-family: Virgula Vulgaris Bold;
+            src:url('http://static.cnprosco.cn/dawer/font/Virgula Vulgaris Bold.ttf');
+        }
+
+        
+
+        @font-face {
+            /* font-properties */
+            font-family: GeosansLight-Oblique;
+            src:url('http://static.cnprosco.cn/dawer/font/GeosansLight-Oblique.ttf');
+        }
+
+        @font-face {
+            /* font-properties */
+            font-family: GeosansLight;
+            src:url('http://static.cnprosco.cn/dawer/font/GeosansLight.ttf');
+        }
+
+        
+    </style>
+
+
+</head>
+<body style="height: 650px;">
+    <img src="http://static.cnprosco.cn/dawer/static/LOGO.png" style="float: left;width: 200px;margin-top: 30px;margin-left: 60px;">
+    <div class="shang" >
+        
+
+        <% if(!currentUser){ %>
+            <a href="/register">sign up</a>
+            <a href="/login">login</a>
+        <% } else { %>
+        <li class="nav-item">
+                            <a class="nav-link" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        <% } %>
+            <a href="/profile"><img src="http://static.cnprosco.cn/dawer/static/1.png"></a>
+    </div>
