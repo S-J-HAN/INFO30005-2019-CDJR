@@ -4,6 +4,14 @@ var photoSchema = new mongoose.Schema({
     name: String,
     description: String,
     image: String,
+    likes: {
+        type: Number,
+        default: 0
+    },
+    postAt: {
+        type: Date,
+        default: Date.now
+    },
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

@@ -16,6 +16,7 @@
     <div id="show-photo-discussion">
       <h4 id="show-photo-title"><%= photo.name %></h4>
       <p><em>Submitted By <%= photo.author.username %></em></p>
+      <p>Created on <%= moment(photo.postAt).format('LL') %></p>
       <p id="show-photo-description"><%= photo.description %></p>
 
       <hr>
@@ -29,7 +30,7 @@
         <hr>
       <% } %>
 
-      <% photo.comments.forEach(function(comment){ %>
+    <% photo.comments.forEach(function(comment){ %>
         <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
           <div class="user-comment-header">
             <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
