@@ -3,6 +3,19 @@
     <div class="container">
     <a href="/photo/new">Create new photo!</a><br>
         <% photos.forEach(function(photo){ %>
+
+                <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
+                    <form action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
+                        <input class="btn btn-warning" type="submit" value="Unlike" id="removeLike">
+                        <span><%= photo.likes %></span>
+                    </form>
+                <% }else{ %>
+                    <form action="/photo/<%= photo._id %>/like" method="POST">
+                        <input class="btn btn-primary" type="submit" value="Like" id="addLike">
+                        <span><%= photo.likes %></span>
+                    </form>
+                <% } %>
+                
                 <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
                 
                 <img class="card-img-top" src="<%= photo.image %>">
@@ -10,6 +23,5 @@
        <% }) %>
     </div>
 </main>
-
-
+<% include ../partials/footerScript %>
 <% include ../partials/footer %>

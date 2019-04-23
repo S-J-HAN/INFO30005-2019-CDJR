@@ -8,6 +8,10 @@ var photoSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    favorite:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }],
     postAt: {
         type: Date,
         default: Date.now
