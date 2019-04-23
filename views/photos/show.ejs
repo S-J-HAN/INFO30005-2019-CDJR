@@ -1,14 +1,14 @@
 <% include ../partials/header %>
 <div class="container show-photo">
-  <a id="back-button" href="/photo">< back</a>
+  <a id="back-button" href="/photo"><i class="fas fa-angle-left"></i> back</a>
   <div class="show-photo">
     <div id="photo-block">
       <img id="show-photo" src="<%= photo.image %>">
       <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
         <div id="buttons">
-          <a class="btn btn-primary" id="edit-button" href="/photo/<%= photo._id %>/edit">Edit</a>
+          <a class="btn btn-primary" id="edit-button" href="/photo/<%= photo._id %>/edit"><i class="fas fa-pen"></i>  Edit</a>
           <form id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
-              <button class="btn btn-danger" id="delete-button">Delete</button>
+              <button class="btn btn-danger" id="delete-button"><i class="fas fa-trash-alt"></i>  Delete</button>
           </form>
         </div>
       <% } %>
@@ -20,12 +20,12 @@
       <p id="show-photo-description"><%= photo.description %></p>
 
       <hr>
-      <!-- <a href="/photo/<%= photo._id %>/comment/new">Add new comment</a> -->
+
       <% if(currentUser) {%>
-        <form action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
-              <!-- <input type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"> -->
-              <textarea rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
-              <button type="">Submit!</button>
+        <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
+              <label for="comment">Comment</label>
+              <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
+              <button class="btn btn-primary rounded-pill mt-3" type="">Submit</button>
         </form>
         <hr>
       <% } %>
@@ -33,34 +33,10 @@
     <p><%= photo.description %></p>
 
     
-    <p><em>Submitted By <%= photo.author.username %></em></p>
+    <p><em>Submitted By <a href="/profile/<%= photo.author.username %>"><%= photo.author.username %></a></em></p>
     <p>Created on <%= moment(photo.postAt).format('LL') %></p>
 
-    
 
-    <img class="card-img-top" src="<%= photo.image %>">
-
-    <a href="/photo/<%= photo._id %>/comment/new">Add new comment</a>
-    <hr>
-    <% photo.comments.forEach(function(comment){ %>
-        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-          <div class="user-comment-header">
-            <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
-            <div class="user-alter-comment">
-              <a href="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" id="edit-comment">Edit</a>
-              <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
-                  <input id="delete-comment" type="submit" value="Delete">
-              </form>
-            </div>
-          </div>
-        <% } else { %>
-          <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
-        <% } %>
-        <p><%= comment.text %></p>
-      <% })%>
-    </div>
-  </div>
-</div>
 
 <% include ../partials/footerScript%>
 <% include ../partials/footer %>

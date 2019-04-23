@@ -1,23 +1,5 @@
 <% include ../partials/header %>
-    <main>
-        <div class="container">
-            <h1><%= currentUser.username %>'s Profile page</h1>
-            <li><strong>Age: <%= currentUser.age %></strong></li>
-            <li><strong>City: <%= currentUser.city %> </strong></li>
-            <li><strong>Contact: <%= currentUser.email %> </strong></li>
-            
-            <a class="btn btn-info" href="/profile/<%= currentUser.username %>/like">Liked Work</a>
 
-            <h3>Your Work in Timeline</h3>
-            <% photos.forEach(function(photo){ %>
-                <h5><%= photo.name %></h5>
-                <p><strong>Created at</strong><span class="ml-2"><%= moment(photo.postAt).format('LL, h:mm a') %></span></p>
-                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
-            <% }) %>
-
-            
-        </div>
-    </main>
       <div class="profilePage" id="content-wrap">
           <div class="profileInformation">
             <h1 class="username"><%= currentUser.username %></h1>
@@ -26,16 +8,18 @@
             <h2 class="profileHeader">Age</h2>
             <p class="profileText"><%= currentUser.age %></p>
             <h2 class="profileHeader">Sign up date</h2>
-            <p class="profileText">11 April, 2019</p>
+            <p class="profileText"><%= moment(currentUser.date).format('LL') %></p>
             <h2 class="profileHeader">Location</h2>
             <p class="profileText"><%= currentUser.city %></p>
+            <a class="btn btn-primary" href="/photo/new">Create</a><br>
+            <a class="btn btn-info mt-2" href="/profile/<%= currentUser.username %>/like">Likes</a>
           </div>
 
           <div class="gallery">
             <% photos.forEach(function(photo){ %>
-                <a href="/photo/<%= photo._id %>">
-                  <img class="image" src="<%= photo.image %>">
-                </a>
+                <h5><%= photo.name %></h5>
+                <p><strong>Created at</strong><span class="ml-2"><%= moment(photo.postAt).format('LL, h:mm a') %></span></p>
+                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
             <% }) %>
           </div>
       </div>

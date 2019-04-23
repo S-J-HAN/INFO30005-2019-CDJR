@@ -20,8 +20,8 @@ var createUser = function(req, res){
             return res.redirect('/register');
         }
         passport.authenticate('local')(req, res, function(){
-            req.flash("success", "Welcome to Drawer " + user.username);
-            res.redirect('/')
+            req.flash("success", "Hi " + user.username + ", Welcome to Drawer!");
+            res.redirect('/profile/' + user.username)
         });
     });
 }

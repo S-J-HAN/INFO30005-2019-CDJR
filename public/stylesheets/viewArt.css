@@ -1,5 +1,5 @@
 .show-photo {
-  width: 100vw;
+  /* width: 100vw; */
   height: auto;
 
   margin-top: 30px;
@@ -92,11 +92,12 @@
   font-family: Helvetica;
 
   color: white;
-  background-color: #112d4e;
+  background-color: #3f72af;
+  transition: background-color 0.2s;
 }
 
 #back-button:hover {
-  color: #3f72af;
+  background-color: #112d4e;
 }
 
 .container.show-photo {

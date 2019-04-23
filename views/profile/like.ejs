@@ -1,14 +1,17 @@
 <% include ../partials/header %>
     <main>
         <div class="container">
-            <h1><%= currentUser.username %>'s Liked work</h1>
-            <a href="/profile/<%= currentUser.username %>">Back</a>
-            <% photos.forEach(function(photo){ %>
-                <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
-                <p><%= photo. %></p>
-                <img class="card-img-top" src="<%= photo.image %>">
-            <% }) %>
-
+        <a href="/profile/<%= currentUser.username %>">Back</a>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <h1 class="text-center"><%= currentUser.username %>'s Liked work</h1>
+                    <% photos.forEach(function(photo){ %>
+                        <h4><%= photo.name %></h4>
+                        <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
+                    <% }) %>
+                </div>
+            </div>
         </div>
     </main>
+
 <% include ../partials/footer %>
