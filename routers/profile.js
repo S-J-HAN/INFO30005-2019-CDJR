@@ -8,4 +8,7 @@ var controller = require('../controllers/controller');
 //user's profile page
 router.get('/:username', middleware.isLoggedIn, controller.findAllPhotosByUsername);
 
+//user's like work page
+router.get('/:username/like', middleware.isLoggedIn, controller.findAllLikesByUsername);
+
 module.exports = router;

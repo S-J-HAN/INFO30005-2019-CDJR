@@ -86,15 +86,34 @@ var deleteOnePhoto = function(req, res){
     })
 }
 
+//display user's previous work and sort by descending date (new -> old) 
 var findAllPhotosByUsername = function (req, res) {
     User.findOne({username: req.params.username}, function (err, foundUser) {
-        Photo.find({'author.username': req.params.username}, function (err, foundPhoto) {
-            if (!err) {
-                res.render('profile/profile', {
+        Photo.find({'author.username': req.params.username}).sort({postAt: 'desc'}).exec(
+            function (err, foundPhoto) {
+                if (!err) {
+                    res.render('profile/profile', {
+                        currentUser: foundUser,
+                        photos: foundPhoto,
+                        moment: moment
+                    });
+                } else {
+                    res.send(404);
+                }
+            }
+        )
+    });
+}
+
+var findAllLikesByUsername = function(req, res){
+    User.findOne({username: req.params.username}, function (err, foundUser) {
+        Photo.find({'favorite': req.user._id}, function(err, foundPhoto){
+            if(!err){
+                res.render('profile/like', {
                     currentUser: foundUser,
                     photos: foundPhoto
                 });
-            } else {
+            }else{
                 res.send(404);
             }
         });
@@ -147,6 +166,47 @@ var deleteComment = function (req, res) {
     });
 }
 
+// ---------------Like Method--------------
+var addToLike = function (req, res) {
+    Photo.findByIdAndUpdate({
+        _id: req.params.id
+    }, {
+        $inc: {
+            'likes': 1
+        }
+    }, function (err, photo) {
+        if (!err) {
+            photo.favorite.push(req.user._id);
+            photo.save();
+            req.flash('success', 'Successfully added to favorite!');
+            res.redirect('back')
+        } else {
+            req.flash('error', 'something went wrong!');
+            console.log(err);
+        }
+    });
+}
+
+var removeFromLike = function (req, res) {
+    Photo.findOneAndUpdate({
+        _id: req.params.id
+    }, {
+        $pull: {
+            favorite: req.user._id
+        },
+        $inc: {
+            'likes': -1
+        }
+    }, function (err, photo) {
+        if (!err) {
+            req.flash('success', 'Successfully removed from favorite!');
+            res.redirect('back');
+        } else {
+            console.log(err);
+        }
+    })
+}
+
 
 module.exports.createUser = createUser;
 module.exports.createPhoto = createPhoto;
@@ -158,3 +218,6 @@ module.exports.findAllPhotosByUsername = findAllPhotosByUsername;
 module.exports.createComment = createComment;
 module.exports.updateComment = updateComment;
 module.exports.deleteComment = deleteComment;
+module.exports.addToLike = addToLike;
+module.exports.removeFromLike = removeFromLike;
+module.exports.findAllLikesByUsername = findAllLikesByUsername;

@@ -34,40 +34,9 @@ router.put('/:id', middleware.checkPhotoOwnership, controller.updateOnePhoto);
 router.delete('/:id', middleware.checkPhotoOwnership, controller.deleteOnePhoto);
 
 // add to favorite
-router.post('/:id/like', middleware.isLoggedIn, function(req, res) {
-    Photo.findByIdAndUpdate({_id: req.params.id}, {$inc: {'likes': 1} }, function(err, photo){
-        if(!err){
-            photo.favorite.push(req.user._id);
-            photo.save();
-            req.flash('success', 'Successfully added to favorite!');
-            res.redirect('back')
-        }else{
-            req.flash('error', 'something went wrong!');
-            console.log(err);
-        }
-    })
-})
+router.post('/:id/like', middleware.isLoggedIn, controller.addToLike);
 
 //remove from favorite
-router.put('/:id/unlike', middleware.isLoggedIn, function(req, res){
-    Photo.findOneAndUpdate({
-                _id: req.params.id
-            }, {
-                $pull: {
-                    favorite: req.user._id
-                },
-                $inc: {
-                    'likes': -1
-                }
-            }
-           , function (err, photo) {
-                if(!err){
-                    req.flash('success', 'Successfully removed from favorite!');
-                    res.redirect('back');
-                }else{
-                    console.log(err);
-                }
-        })
-})
+router.put('/:id/unlike', middleware.isLoggedIn, controller.removeFromLike);
 
 module.exports = router;

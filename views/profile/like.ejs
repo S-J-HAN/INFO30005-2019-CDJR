@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+    <main>
+        <div class="container">
+            <h1><%= currentUser.username %>'s Liked work</h1>
+            <a href="/profile/<%= currentUser.username %>">Back</a>
+            <% photos.forEach(function(photo){ %>
+                <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
+                <p><%= photo. %></p>
+                <img class="card-img-top" src="<%= photo.image %>">
+            <% }) %>
+
+        </div>
+    </main>
+<% include ../partials/footer %>

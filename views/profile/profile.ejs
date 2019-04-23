@@ -6,14 +6,16 @@
             <li><strong>City: <%= currentUser.city %> </strong></li>
             <li><strong>Contact: <%= currentUser.email %> </strong></li>
             
-            <h3>Previous Work</h3>
+            <a class="btn btn-info" href="/profile/<%= currentUser.username %>/like">Liked Work</a>
+
+            <h3>Your Work in Timeline</h3>
             <% photos.forEach(function(photo){ %>
-                <a href="/photo/<%= photo._id %>"><%= photo.name %></a>
-                <img class="card-img-top" src="<%= photo.image %>">
+                <h5><%= photo.name %></h5>
+                <p><strong>Created at</strong><span class="ml-2"><%= moment(photo.postAt).format('LL, h:mm a') %></span></p>
+                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
             <% }) %>
 
-            <h3>Liked Work</h3>
-            <%  %>
+            
         </div>
     </main>
 <% include ../partials/footer %>
