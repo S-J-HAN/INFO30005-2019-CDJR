@@ -1,22 +1,28 @@
 <% include ../partials/header %>
 <main>
     <div class="container home">
-        <% photos.forEach(function(photo){ %>
-                <a href="/photo/<%= photo._id %>"><h4 class="display-4"><%= photo.name %></h4></a>
-                <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
-                    <form action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
-                        <input class="btn btn-info" type="submit" value="Unlike" id="removeLike">
-                        <span><%= photo.likes %></span>
-                    </form>
-                <% }else{ %>
-                    <form action="/photo/<%= photo._id %>/like" method="POST">
-                        <input class="btn btn-primary" type="submit" value="Like" id="addLike">
-                        <span><%= photo.likes %></span>
-                    </form>
-                <% } %>
-                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
-
-       <% }) %>
+        <div class="row justify-content-center">
+            <% photos.forEach(function(photo){ %>
+                <div class="col-8 col-sm-6 col-lg-4 my-3">
+                    <div class="card text-white">
+                        <div class="card-container">
+                            <a href="/photo/<%= photo._id %>"><img class="card-img-top image" src="<%= photo.image %>"></a>
+                        </div>  
+                        <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
+                            <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">    
+                                <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
+                                <h4 class="card-text text-center"><%= photo.name %></h4>
+                            </form>
+                        <% }else{ %>
+                            <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST"> 
+                                <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
+                                <h4 class="card-text text-center"><%= photo.name %></h4>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+       </div>
     </div>
 </main>
 <% include ../partials/footerScript %>

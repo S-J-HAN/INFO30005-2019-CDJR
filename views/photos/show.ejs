@@ -5,9 +5,11 @@
     <div id="photo-block">
       <img id="show-photo" src="<%= photo.image %>">
       <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
-        <div id="buttons">
-          <a class="btn btn-primary" id="edit-button" href="/photo/<%= photo._id %>/edit"><i class="fas fa-pen"></i>  Edit</a>
-          <form id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
+        <div class="form-row ml-4 mt-3">
+          <form id="form-inline" action="/photo/<%= photo._id %>/edit" menthod="GET">
+            <button class="btn btn-primary" id="edit-button"><i class="fas fa-pen"></i>  Edit</button>
+          </form>
+          <form class="form-inline" id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
               <button class="btn btn-danger" id="delete-button"><i class="fas fa-trash-alt"></i>  Delete</button>
           </form>
         </div>
@@ -21,20 +23,29 @@
 
       <hr>
 
-      <% if(currentUser) {%>
-        <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
-              <label for="comment">Comment</label>
-              <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
-              <button class="btn btn-primary rounded-pill mt-3" type="">Submit</button>
-        </form>
-        <hr>
-      <% } %>
+      <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
+            <label for="comment">Comment</label>
+            <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
+            <button class="btn btn-primary mt-3" type="">Submit</button>
+      </form>
 
-    <p><%= photo.description %></p>
+      <hr>
 
-    
-    <p><em>Submitted By <a href="/profile/<%= photo.author.username %>"><%= photo.author.username %></a></em></p>
-    <p>Created on <%= moment(photo.postAt).format('LL') %></p>
+      <% photo.comments.forEach(function(comment){ %>
+        <a id="comment-username" href="/profile/<%= comment.author.username %>"><%= comment.author.username %></a>
+        <p id="comment-text"><%= comment.text %></p>
+        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+            <div class="form-row">
+              <form class="form-inline" action="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" method="GET">
+                  <input id="edit-comment" class="btn px-3" type="submit" value="Edit">
+              </form>
+              <form class="form-inline" action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                  <input id="delete-comment" class="btn px-2" type="submit" value="Delete">
+              </form>
+            </div>
+            
+        <% } %>
+      <% })%>
 
 
 

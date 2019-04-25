@@ -88,7 +88,6 @@
   padding: 10px;
 
   text-decoration: none;
-  border-radius: 5px;
   font-family: Helvetica;
 
   color: white;
@@ -106,7 +105,7 @@
 
 #comment-username {
   font-family: Futura;
-  font-size: 18px;
+  font-size: 1rem;
 
   color: black;
 
@@ -119,7 +118,7 @@
 
 #comment-text {
   font-family: Helvetica;
-  font-size: 15px;
+  font-size: 1.2rem;
 }
 
 .user-comment-header {
@@ -134,30 +133,20 @@
 
 #delete-comment {
   margin-right: 20px;
-
   font-family: Helvetica;
-
   color: white;
   background-color: #112d4e;
-
-  border-radius: 5px;
+  border-radius: 0px;
   border-width: 0;
 }
 
 #edit-comment {
   margin-right: 10px;
-
   font-family: Helvetica;
-
-  padding-left: 5px;
-  padding-right: 5px;
-
   text-decoration: none;
-
   color: white;
   background-color: #3f72af;
-
-  border-radius: 5px;
+  border-radius: 0px;
   border-width: 0;
 }
 

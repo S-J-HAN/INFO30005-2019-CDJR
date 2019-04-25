@@ -17,9 +17,9 @@
 
           <div class="gallery">
             <% photos.forEach(function(photo){ %>
-                <h5><%= photo.name %></h5>
+                <h5><strong><a class="profilePhotoName" href="/photo/<%= photo._id %>"><%= photo.name %></a></strong></h5>
                 <p><strong>Created at</strong><span class="ml-2"><%= moment(photo.postAt).format('LL, h:mm a') %></span></p>
-                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
+                <a href="/photo/<%= photo._id %>"><img class="card-img-top mb-5" src="<%= photo.image %>"></a>
             <% }) %>
           </div>
       </div>
