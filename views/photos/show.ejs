@@ -30,13 +30,22 @@
         <hr>
       <% } %>
 
-    <p><%= photo.description %></p>
-
-    
-    <p><em>Submitted By <a href="/profile/<%= photo.author.username %>"><%= photo.author.username %></a></em></p>
-    <p>Created on <%= moment(photo.postAt).format('LL') %></p>
-
-
+      <% photo.comments.forEach(function(comment){ %>
+        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+          <div class="user-comment-header">
+            <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
+            <div class="user-alter-comment">
+              <a href="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" id="edit-comment">Edit</a>
+              <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                  <input id="delete-comment" type="submit" value="Delete">
+              </form>
+            </div>
+          </div>
+        <% } else { %>
+          <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
+        <% } %>
+        <p><%= comment.text %></p>
+      <% })%>
 
 <% include ../partials/footerScript%>
 <% include ../partials/footer %>
