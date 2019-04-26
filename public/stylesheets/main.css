@@ -3,6 +3,10 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.btn{
+  border-radius: 0;  
+}
+
 #loginForm .loginBox {
   border: 2px solid #3f72af;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
@@ -47,17 +51,54 @@ body {
   z-index: 100;
 }
 
-.container {
-  width: 100vw;
-  margin: 0px;
-}
-
 .container.home {
   padding-top: 50px;
 }
 
 .container .profile {
   width: 100%;
+}
+
+/* photo/index.css */
+.card{
+  border:none;
+  background-color: #F9F7F7;
+}
+.card .image {
+  opacity: 1;
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+}
+
+.card.container:hover{
+  opacity: 0.2
+}
+
+.card.image:hover .card-title-middle {
+  display: block;
+  opacity: 1;
+}
+.card-img-top{
+  border-radius: 0;
+}
+.card-text{
+  color: #112d4e;
+  font-size: 1.3rem;
+}
+
+.likeButton{
+  background: transparent;
+  border: none !important;
+}
+
+.likeform{
+  margin:0;
+  padding: 0;
 }
 
 #page-container {
