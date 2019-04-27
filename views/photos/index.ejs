@@ -2,12 +2,11 @@
 <main>
     <div class="container home">
         <div class="row justify-content-center">
-            <% photos.forEach(function(photo){ %>
-                <div class="col-8 col-sm-6 col-lg-4 my-3">
+            
+            <div class="card-columns">
+                <% photos.forEach(function(photo){ %>
                     <div class="card text-white">
-                        <div class="card-container">
-                            <a href="/photo/<%= photo._id %>"><img class="card-img-top image" src="<%= photo.image %>"></a>
-                        </div>  
+                        <a href="/photo/<%= photo._id %>"><img class="card-img-top image" src="<%= photo.image %>"></a> 
                         <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
                             <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">    
                                 <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
@@ -20,8 +19,9 @@
                             </form>
                         <% } %>
                     </div>
-                </div>
-            <% }) %>
+                <% }) %>
+            </div>
+            
        </div>
     </div>
 </main>
