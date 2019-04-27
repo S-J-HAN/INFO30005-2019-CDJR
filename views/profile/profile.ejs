@@ -16,12 +16,23 @@
           </div>
 
           <div class="gallery">
-            <% photos.forEach(function(photo){ %>
-                <!-- <h5><%= photo.name %></h5>
-                <p><strong>Created at</strong><span class="ml-2"><%= moment(photo.postAt).format('LL, h:mm a') %></span></p> -->
-                <a href="/photo/<%= photo._id %>">
-                  <img class="image" src="<%= photo.image %>">
-                </a>
+            <% var photosByYear = new Object;
+              photos.forEach(function(photo) {
+                if (photosByYear[moment(photo.postAt).format("YYYY")]) {
+                  photosByYear[moment(photo.postAt).format("YYYY")].push(photo);
+                } else {
+                  photosByYear[moment(photo.postAt).format("YYYY")] = [photo];
+                }
+            }) %>
+
+            <% Object.keys(photosByYear).reverse().forEach(function(key) { %>
+              <% art = photosByYear[key] %>
+              <h3 class="profileHeader"><%= key %></h3>
+              <% art.forEach(function(photo) { %>
+                  <a href="/photo/<%= photo._id %>">
+                    <img class="image" src="<%= photo.image %>">
+                  </a>
+              <% }) %>
             <% }) %>
           </div>
       </div>
