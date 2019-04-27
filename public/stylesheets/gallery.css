@@ -7,6 +7,20 @@
   display: inline-block;
 
   float: left;
+  
+  animation-name: loadGallery;
+  animation-duration: 1s;
+}
+
+.likeGallery {
+  width: 100vw;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  padding: 10px;
+  display: inline-block;
+
+  float: left;
 
   animation-name: loadGallery;
   animation-duration: 1s;
@@ -28,6 +42,30 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  margin: auto;
+  margin-bottom: 15px;
+  margin-right: 10px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.noArt {
+  float: left;
+
+  width: 200px;
+  height: 300px;
+
+  padding-top: 100px;
+
+  font-family: Futura;
+
+  text-align: center;
+  vertical-align: middle;
+
+  background-color: #dbe2ef;
 
   margin: auto;
   margin-bottom: 15px;

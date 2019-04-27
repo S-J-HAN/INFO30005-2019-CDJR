@@ -4,7 +4,7 @@
           <div class="profileInformation">
             <h1 class="username"><%= currentUser.username %></h1>
             <h2 class="profileHeader">About</h2>
-            <p class="profileText">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <p class="profileText">I'm passionate about music, art and design. I loved to draw as a child, but I've only recently picked it up as a hobby again as an adult. My favourite mediums are acrylic, watercolour and good old graphite pencil. I like to draw anything that I find interesting, from people to buildings and even cows. Welcome to my art journey!</p>
             <h2 class="profileHeader">Age</h2>
             <p class="profileText"><%= currentUser.age %></p>
             <h2 class="profileHeader">Sign up date</h2>
@@ -34,6 +34,10 @@
                   </a>
               <% }) %>
             <% }) %>
+
+            <% if (photos.length == 0) { %>
+              <h3 class="noArt">No art yet...</h3>
+            <% } %>
           </div>
       </div>
 <% include ../partials/footer %>

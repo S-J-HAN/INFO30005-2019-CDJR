@@ -17,17 +17,22 @@
     </div>
     <div id="show-photo-discussion">
       <h4 id="show-photo-title"><%= photo.name %></h4>
-      <p><em>Submitted By <%= photo.author.username %></em></p>
+      <p>
+        <em>Submitted By </em>
+        <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a>
+      </p>
       <p>Created on <%= moment(photo.postAt).format('LL') %></p>
       <p id="show-photo-description"><%= photo.description %></p>
 
       <hr>
 
-      <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
-            <label for="comment">Comment</label>
-            <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
-            <button class="btn btn-primary mt-3" type="">Submit</button>
-      </form>
+      <% if (currentUser) { %>
+        <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
+              <label for="comment">Comment</label>
+              <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
+              <button class="btn btn-primary mt-3" type="">Submit</button>
+        </form>
+      <% } %>
 
       <% photo.comments.forEach(function(comment){ %>
         <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
@@ -43,7 +48,7 @@
         <% } else { %>
           <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
         <% } %>
-        <p><%= comment.text %></p>
+        <p id="comment-text"><%= comment.text %></p>
       <% })%>
 
 <% include ../partials/footerScript%>
