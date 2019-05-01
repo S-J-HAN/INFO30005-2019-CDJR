@@ -12,7 +12,7 @@
             <h2 class="profileHeader">Location</h2>
             <p class="profileText"><%= currentUser.city %></p>
             <a class="btn btn-primary" href="/photo/new">Create</a><br>
-            <a class="btn btn-info mt-2" href="/profile/<%= currentUser.username %>/like">Likes</a>
+            <a class="btn btn-info mt-2" href="/profile/<%= currentUser.username %>/like">My Likes</a>
           </div>
 
           <div class="gallery">
@@ -40,4 +40,7 @@
             <% } %>
           </div>
       </div>
+
+
+<% include ../partials/footerScript %>
 <% include ../partials/footer %>

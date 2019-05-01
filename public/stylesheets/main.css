@@ -3,37 +3,45 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-.btn{
+.btn {
   border-radius: 0;
 }
 
 #loginForm .loginBox {
   border: 2px solid #3f72af;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
-  #loginForm .loginBox .submitButton {
-    margin-top: 2rem;
-    background-color: transparent;
-    text-align: center; }
-    #loginForm .loginBox .submitButton button {
-      background-color: #3f72af;
-      border: #3f72af;
-      transition: box-shadow 0.3s; }
-    #loginForm .loginBox .submitButton button:hover {
-      box-shadow: 2px 2px #112d4e; }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+#loginForm .loginBox .submitButton {
+  margin-top: 2rem;
+  background-color: transparent;
+  text-align: center;
+}
+#loginForm .loginBox .submitButton button {
+  background-color: #3f72af;
+  border: #3f72af;
+  transition: box-shadow 0.3s;
+}
+#loginForm .loginBox .submitButton button:hover {
+  box-shadow: 2px 2px #112d4e;
+}
 
 #registerForm .registerBox {
   border: 2px solid #3f72af;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
-  #registerForm .registerBox .submitButton {
-    margin-top: 1.2rem;
-    background-color: transparent;
-    text-align: center; }
-    #registerForm .registerBox .submitButton button {
-      background-color: #3f72af;
-      border: #3f72af;
-      transition: box-shadow 0.3s; }
-    #registerForm .registerBox .submitButton button:hover {
-      box-shadow: 2px 2px #112d4e; }
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+#registerForm .registerBox .submitButton {
+  margin-top: 1.2rem;
+  background-color: transparent;
+  text-align: center;
+}
+#registerForm .registerBox .submitButton button {
+  background-color: #3f72af;
+  border: #3f72af;
+  transition: box-shadow 0.3s;
+}
+#registerForm .registerBox .submitButton button:hover {
+  box-shadow: 2px 2px #112d4e;
+}
 
 .btn-primary {
   background-color: #3f72af;
@@ -42,7 +50,7 @@ body {
   transition: background-color 0.2s;
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: #112d4e;
 }
 
@@ -60,9 +68,9 @@ body {
 }
 
 /* photo/index.css */
-.card{
-  border:none;
-  background-color: #F9F7F7;
+.card {
+  border: none;
+  background-color: #f9f7f7;
 }
 .card .image {
   opacity: 1;
@@ -70,29 +78,29 @@ body {
   border-radius: 0;
   width: 100%;
   height: auto;
-  transition: .5s ease;
+  transition: 0.5s ease;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   backface-visibility: hidden;
 }
-.card .image:hover{
+.card .image:hover {
   opacity: 0.5;
 }
 
-.card-img-top{
+.card-img-top {
   border-radius: 0;
 }
-.card-text{
+.card-text {
   color: #112d4e;
   font-size: 1.3rem;
 }
 
-.likeButton{
+.likeButton {
   background: transparent;
   border: none !important;
 }
 
-.likeform{
-  margin:0;
+.likeform {
+  margin: 0;
   padding: 0;
 }
 
@@ -104,35 +112,35 @@ body {
   padding-bottom: 2.5rem;
 }
 
-.navbar {
-  /* background-image: linear-gradient(to right, #112d4e , #3f72af ); */
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 2px 15px 0 rgba(0, 0, 0, 0.1); */
-}
-
 .navbar-brand {
-  color: black;
+  color: #112d4e;
 }
 
 .navlink {
-  color: black;
+  color: #112d4e;
   padding: 10px;
-
-  font-family: Helvetica;
+  font-family: 'Raleway', sans-serif;
 }
 
-.navlink:hover, .logo:hover {
-  color: #112d4e;
+.sticky-top.scrolled {
+  background-color: #f9f7f7 !important;
+  transition: background-color 200ms linear;
+}
+
+.navlink:hover,
+#logo:hover {
+  color: #3f72af;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 #logo {
-  color: black;
+  color: #112d4e;
   width: auto;
   font-size: 30px;
   font-family: Georgia;
   font-style: oblique;
   font-weight: bold;
-
   margin-left: 30px;
 }
 
@@ -159,7 +167,6 @@ body {
     column-count: 2;
   }
 }
-
 
 @media (min-width: 75em) {
   .card-columns {
