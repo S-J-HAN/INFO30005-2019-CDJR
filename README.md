@@ -37,7 +37,7 @@ We're using:
 We haven't included any external APIs just yet, but we're planning on integrating APIs from facebook and twitter for sharing artworks on social media
 
 ## Contributing
-If you’re modifying someone else’s code, please push to your own branch first unless the modification was discussed previously.
+If you’re modifying someone else’s code, please push to your own branch first unless the modification was discussed previously on Slack or at a group meeting.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
