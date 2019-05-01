@@ -18,10 +18,9 @@
     <div id="show-photo-discussion">
       <h4 id="show-photo-title"><%= photo.name %></h4>
       <p>
-        <em>Submitted By </em>
-        <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a>
+        <a href="/profile/<%= photo.author.username %>" id="comment-username">By <%= photo.author.username %></a>
       </p>
-      <p>Created on <%= moment(photo.postAt).format('LL') %></p>
+      <p class="description-date">Created on <%= moment(photo.postAt).format('LL') %></p>
       <p id="show-photo-description"><%= photo.description %></p>
 
       <hr>
@@ -45,8 +44,10 @@
               </form>
             </div>
           </div>
+          <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
         <% } else { %>
           <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
+          <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
         <% } %>
         <p id="comment-text"><%= comment.text %></p>
       <% })%>

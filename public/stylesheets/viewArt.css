@@ -117,7 +117,7 @@
 }
 
 #comment-username:hover {
-  color: #112d4e;
+  color: #3f72af;
 }
 
 #comment-text {
@@ -171,6 +171,25 @@
 
 #input-comment {
   width: inherit;
+}
+
+.comment-date {
+  font-family: Helvetica;
+  font-size: 11px;
+  font-style: italic;
+
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.description-date {
+  font-family: Helvetica;
+  font-size: 13px;
+  font-style: italic;
+
+  padding: 0;
+  margin-top: 2px;
+  margin-bottom: 10px;
 }
 
 @keyframes loadPhoto {
