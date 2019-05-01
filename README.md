@@ -23,6 +23,19 @@ Every user on Drawer gets a profile page, which is open to the public to view. T
 
 The upload page allows users to upload new artwork from a local file or an existing web URL. Uploaded files are stored on firebase, and links are stored on MongoDB. Along with the file, users can add a description, title, and even choose the date of the post (since not all artworks are necessarily new - an important function of drawer is to also store old works). In the near future, we’re also planning on including the ability to give a new artwork a tag. You can visit the upload page at https://drawer-by-cdjr.herokuapp.com/photo/new, though you’ll need to be logged in to do so.
 
+## Technologies
+We're using:
+- html/css and ejs for frontend 
+- MongoDB, Firebase for backend
+- passport.js for authorisation
+- moment.js for timestamps
+- express
+- nodejs
+- Heroku for deployment 
+
+## APIs
+We haven't included any external APIs just yet, but we're planning on integrating APIs from facebook and twitter for sharing artworks on social media
+
 ## Contributing
 If you’re modifying someone else’s code, please push to your own branch first unless the modification was discussed previously.
 
