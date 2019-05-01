@@ -1,40 +1,38 @@
 <% include ../partials/header %>
-    <head>
-        <title>New Image</title>
-        <link rel="stylesheet" href="/stylesheets/newphoto.css">
-    </head>
-    <body>
-        <h1 class="PageInfo" align="center">Upload new image</h1>
-        <div class="NewImage">    
-            <form action="/photo" method="POST" >
-                <div class="ImageInfo Left">        
-                    <div class="ImagePreview">
-                    <img src=https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=767&q=80 width="40vw"></img></div>
-                    <div class="UploadImage">
-                        <div class="UploadImage Left2">
-                            <h2 class="ImageUpload">Upload Image File</h2>
-                            <p class="ImageUpload"><input type="file" name="image" accept="image/png, image/jpeg"></p>
-                        </div>    
-                        <div class="UploadImage Right2">
-                            <h2 class="ImageUpload">Upload by URL</h2>
-                            <br>
-                            <p class="ImageUpload"><input type="text" name="image" placeholder="Enter Image URL"></p>
-                        </div>
-                    </div>    
+    <div class="container">
+        <h1 class="text-center mb-3">Upload new image</h1>
+        <form action="/photo" method="POST" >
+            <div class="row">
+                <div class="col-6 mr-5">        
+                    <div id="imagePreview">
+                        <img id="imagePreviewImage" src=https://images.unsplash.com/photo-1510936111840-65e151ad71bb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=767&q=80></img>
+                    </div>
+                    <div class="input-group mt-3">
+                        <label class="custom-file-label" for="imageUpload">Upload Image File</label>
+                        <input class="custom-file-input" id="imageUpload" type="file" name="image" accept="image/png, image/jpeg">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="imageURL">Upload by URL</label>
+                        <input class="form-control" id="imageURL" type="text" name="image" placeholder="Enter Image URL">
+                    </div>
                 </div>
-                <div class="ImageInfo Right">
-                    <div class="ImageDetails">
-                        <h2>Title</h2>
-                        <p class=DetailField><input type="text" name="name" placeholder="Image title" size="50"></p>
-                        <h2>Date</h2>
-                        <p class=DetailField><input type="date" name="date"></p>
-                        <h2>Description</h2>
-                        <p class=DetailField><textarea name="description" placeholder="Image description" rows="10" cols="50"></textarea></p>
-                        <button type="">Submit Image</button>
-                    </div>        
-                </div>     
-            </form>
-        </div>
-    </body>     
+                <div class="col-5 pl-4">
+                    <div class="form-group">
+                        <label for="newTitle">Title</label>
+                        <input class="form-control" id="newTitle" type="text" name="name" placeholder="Image title" size="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="newDate">Date</label>
+                        <input class="form-control" id="newDate" type="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="newDescription">Description</label>
+                        <textarea class="form-control" id="newDescription" name="description" placeholder="Image description" rows="10" cols="50"></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="">Submit</button>       
+                </div>
+            </div>
+        </form>
+    </div>   
 <% include ../partials/footerScript %>
 <% include ../partials/footer %>

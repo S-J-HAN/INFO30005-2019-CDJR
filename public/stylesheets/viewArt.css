@@ -1,73 +1,23 @@
-.show-photo {
-  width: 100vw; /* Did someone comment this out? */
-  max-width: 100%;
-  height: auto;
-
-  margin-top: 30px;
-  margin-bottom: 30px;
-
-  display: flex;
-}
-
-#show-photo {
-  width: auto;
-  height: 80vh;
-  max-width: 60vw;
-  margin-left: 20px;
-  object-fit: cover;
-
-  background-color: black;
-
-  border-radius: 5px;
-  position: relative;
-
+.photoImage {
+  width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
-
   animation-name: loadPhoto;
   animation-duration: 0.7s;
-}
-
-#show-photo-discussion {
-  float: left;
-  width: auto;
-  flex: 1;
-  display: block;
-  padding-left: 30px;
-  padding-right: 20px;
-
-  word-wrap: normal;
-
-  animation-name: loadDescription;
-  animation-duration: 0.7s;
-  animation-delay: 0.1s;
 }
 
 #show-photo-title {
   font-family: Futura;
   font-size: 30px;
-
   word-wrap: break-word;
-
   width: inherit;
+  animation-name: loadDescription;
+  animation-duration: 0.7s;
+  animation-delay: 0.1s;
 }
-
-#show-photo-description {
-  font-family: Helvetica;
-  font-size: 14px;
-
-  margin-right: 20px;
-  margin-top: 5px;
-
-  word-wrap: normal;
-  word-break: normal;
+.photoDiscription {
+  overflow-wrap: break-word;
+  font-size: 20px;
   hyphens: auto;
-
-  width: inherit;
-  height: auto;
-}
-
-#photo-block {
-  float: left;
 }
 
 #edit-button {
@@ -87,18 +37,6 @@
   margin-left: 20px;
 }
 
-#back-button {
-  margin-left: 20px;
-  padding: 10px;
-
-  text-decoration: none;
-  font-family: Helvetica;
-
-  color: white;
-  background-color: #3f72af;
-  transition: background-color 0.2s;
-}
-
 #back-button:hover {
   background-color: #112d4e;
 }
@@ -110,9 +48,7 @@
 #comment-username {
   font-family: Futura;
   font-size: 1rem;
-
   color: black;
-
   text-decoration: none;
 }
 
@@ -186,22 +122,46 @@
   font-family: Helvetica;
   font-size: 13px;
   font-style: italic;
-
   padding: 0;
   margin-top: 2px;
   margin-bottom: 10px;
 }
 
-@keyframes loadPhoto {
-  from {margin-top: 50px;
-        opacity: 0;}
-  to {margin-top: 0px;
-        opacity: 1;}
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
 
-@keyframes loadDescription {
-  from {margin-top: 50px;
-        opacity: 0;}
-  to {margin-top: 0px;
-        opacity: 1;}
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
 }

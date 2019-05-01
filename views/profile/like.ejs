@@ -1,10 +1,9 @@
 <% include ../partials/header %>
     <main>
-        <div class="likeGallery">
-        <a id="back-button" href="/profile/<%= currentUser.username %>">Back</a>
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="col-8">
-                    <h1 class="profile-header"><%= currentUser.username %>'s liked works</h1>
+                <div class="col-12">
+                    <h1 class="text-center profile-header my-4"><%= currentUser.username %>'s liked works</h1>
                     <% photos.forEach(function(photo){ %>
                         <a href="/photo/<%= photo._id %>">
                           <img class="image" src="<%= photo.image %>">

@@ -1,46 +1,49 @@
 <% include ../partials/header %>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
 
-      <div class="profilePage" id="content-wrap">
-          <div class="profileInformation">
-            <h1 class="username"><%= currentUser.username %></h1>
-            <h2 class="profileHeader">About</h2>
-            <p class="profileText">I'm passionate about music, art and design. I loved to draw as a child, but I've only recently picked it up as a hobby again as an adult. My favourite mediums are acrylic, watercolour and good old graphite pencil. I like to draw anything that I find interesting, from people to buildings and even cows. Welcome to my art journey!</p>
-            <h2 class="profileHeader">Age</h2>
-            <p class="profileText"><%= currentUser.age %></p>
-            <h2 class="profileHeader">Sign up date</h2>
-            <p class="profileText"><%= moment(currentUser.date).format('LL') %></p>
-            <h2 class="profileHeader">Location</h2>
-            <p class="profileText"><%= currentUser.city %></p>
-            <a class="btn btn-primary" href="/photo/new">Create</a><br>
-            <a class="btn btn-info mt-2" href="/profile/<%= currentUser.username %>/like">My Likes</a>
-          </div>
+        <h1 class="text-center"><%= currentUser.username %></h1>
+        <h2 class="profileHeader">About</h2>
+        <p class="profileText">I'm passionate about music, art and design. I loved to draw as a child, but I've only recently picked it up as a hobby again as an adult. My favourite mediums are acrylic, watercolour and good old graphite pencil. I like to draw anything that I find interesting, from people to buildings and even cows. Welcome to my art journey!</p>
+        <h2 class="profileHeader">Age</h2>
+        <p class="profileText"><%= currentUser.age %></p>
+        <h2 class="profileHeader">Sign up date</h2>
+        <p class="profileText"><%= moment(currentUser.date).format('LL') %></p>
+        <h2 class="profileHeader">Location</h2>
+        <p class="profileText"><%= currentUser.city %></p>
+        <a class="btn btn-primary" href="/photo/new">Create</a><br>
+        <a class="btn btn-info mt-2" href="/profile/<%= currentUser.username %>/like">My Likes</a>
 
-          <div class="gallery">
-            <% var photosByYear = new Object;
-              photos.forEach(function(photo) {
-                if (photosByYear[moment(photo.postAt).format("YYYY")]) {
-                  photosByYear[moment(photo.postAt).format("YYYY")].push(photo);
-                } else {
-                  photosByYear[moment(photo.postAt).format("YYYY")] = [photo];
-                }
-            }) %>
+    </div>
 
-            <% Object.keys(photosByYear).reverse().forEach(function(key) { %>
-              <% art = photosByYear[key] %>
-              <h3 class="profileHeader"><%= key %></h3>
-              <% art.forEach(function(photo) { %>
-                  <a href="/photo/<%= photo._id %>">
-                    <img class="image" src="<%= photo.image %>">
-                  </a>
-              <% }) %>
-            <% }) %>
+    <div class="col-8">
+      <div class="animated animatedFadeInUp fadeInUp">
+        <% var photosByYear = new Object;
+          photos.forEach(function(photo) {
+            if (photosByYear[moment(photo.postAt).format("YYYY")]) {
+              photosByYear[moment(photo.postAt).format("YYYY")].push(photo);
+            } else {
+              photosByYear[moment(photo.postAt).format("YYYY")] = [photo];
+            }
+        }) %>
 
-            <% if (photos.length == 0) { %>
-              <h3 class="noArt">No art yet...</h3>
-            <% } %>
-          </div>
+        <% Object.keys(photosByYear).reverse().forEach(function(key) { %>
+          <% art = photosByYear[key] %>
+          <h3 class="profileHeader"><%= key %></h3>
+          <% art.forEach(function(photo) { %>
+              <a href="/photo/<%= photo._id %>">
+                <img class="image" src="<%= photo.image %>">
+              </a>
+          <% }) %>
+        <% }) %>
+
+        <% if (photos.length == 0) { %>
+          <h3 class="noArt">No art yet...</h3>
+        <% } %>
       </div>
-
-
+    </div>
+  </div>
+</div>
 <% include ../partials/footerScript %>
 <% include ../partials/footer %>

@@ -18,7 +18,7 @@
     </head>
     <body>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" id="logo" href="/">drawer</a>
+            <a class="navbar-brand" id="logo" href="/photo">drawer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,7 +38,7 @@
                             <a class="navlink" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
                         </li>
                         <li class="nav-item">
-                            <a class="navlink" href="/logout">Logout</a>
+                            <a class="navlink" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
                         </li>
                     <% } %>
                 </ul>

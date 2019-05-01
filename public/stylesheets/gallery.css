@@ -12,7 +12,7 @@
   animation-duration: 1s;
 }
 
-.likeGallery {
+/* .likeGallery {
   width: 100vw;
   margin-top: 30px;
   margin-left: 30px;
@@ -24,7 +24,7 @@
 
   animation-name: loadGallery;
   animation-duration: 1s;
-}
+} */
 
 .imageRow {
   padding-bottom: 10px;
@@ -82,8 +82,12 @@
 }
 
 @keyframes loadGallery {
-  from {margin-top: 100px;
-        opacity: 0;}
-  to {margin-top: 30px;
-        opacity: 1;}
+  from {
+    margin-top: 100px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 30px;
+    opacity: 1;
+  }
 }

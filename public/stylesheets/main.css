@@ -54,19 +54,6 @@ body {
   background-color: #112d4e;
 }
 
-.navbar {
-  width: 100%;
-  z-index: 100;
-}
-
-.container.home {
-  padding-top: 50px;
-}
-
-.container .profile {
-  width: 100%;
-}
-
 /* photo/index.css */
 .card {
   border: none;
@@ -174,4 +161,9 @@ body {
     -moz-column-count: 5;
     column-count: 3;
   }
+}
+
+/* Create new image css */
+#imagePreview img {
+  width: 100%;
 }

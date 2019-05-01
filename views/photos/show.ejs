@@ -1,9 +1,8 @@
 <% include ../partials/header %>
-<div class="container show-photo">
-  <a id="back-button" href="/photo"><i class="fas fa-angle-left"></i> back</a>
-  <div class="show-photo">
-    <div id="photo-block">
-      <img id="show-photo" src="<%= photo.image %>">
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-lg-7">
+      <img class="animated animatedFadeInUp fadeInUp photoImage mt-5" src="<%= photo.image %>">
       <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
         <div class="form-row ml-4 mt-3">
           <form id="form-inline" action="/photo/<%= photo._id %>/edit" menthod="GET">
@@ -15,42 +14,44 @@
         </div>
       <% } %>
     </div>
-    <div id="show-photo-discussion">
-      <h4 id="show-photo-title"><%= photo.name %></h4>
-      <p>
-        <a href="/profile/<%= photo.author.username %>" id="comment-username">By <%= photo.author.username %></a>
-      </p>
-      <p class="description-date">Created on <%= moment(photo.postAt).format('LL') %></p>
-      <p id="show-photo-description"><%= photo.description %></p>
-
-      <hr>
-
-      <% if (currentUser) { %>
-        <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
-              <label for="comment">Comment</label>
-              <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
-              <button class="btn btn-primary mt-3" type="">Submit</button>
-        </form>
-      <% } %>
-
-      <% photo.comments.forEach(function(comment){ %>
-        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-          <div class="user-comment-header">
-            <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
-            <div class="user-alter-comment">
-              <a href="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" id="edit-comment">Edit</a>
-              <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
-                  <input id="delete-comment" type="submit" value="Delete">
-              </form>
-            </div>
-          </div>
-          <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
-        <% } else { %>
-          <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
-          <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
+    <div class="col-6 col-lg-5">
+      <div class="mt-5">
+        <h4 class="text-center"><%= photo.name %></h4>
+        <div class="text-center">By <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a></div>
+        <div class="text-center">Created on <%= moment(photo.postAt).format('LL') %></div>
+        <div class="photoDiscription"><%= photo.description %></div>
+        <hr>
+        <% if (currentUser) { %>
+          <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
+                <label for="comment">Comment</label>
+                <textarea class="form-control" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
+                <button class="btn btn-primary mt-3" type="">Submit</button>
+          </form>
         <% } %>
-        <p id="comment-text"><%= comment.text %></p>
-      <% })%>
+      </div>
+      <div class="CommentDetail">
+        <% photo.comments.forEach(function(comment){ %>
+          <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+            <div class="user-comment-header">
+              <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
+              <div class="user-alter-comment">
+                <a href="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" id="edit-comment">Edit</a>
+                <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                    <input id="delete-comment" type="submit" value="Delete">
+                </form>
+              </div>
+            </div>
+            <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
+          <% } else { %>
+            <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
+            <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
+          <% } %>
+          <p id="comment-text"><%= comment.text %></p>
+        <% })%>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% include ../partials/footerScript%>
 <% include ../partials/footer %>
