@@ -1,5 +1,4 @@
-# INFO30005 - Webproj
-## By CDJR Technology
+# INFO30005 - CDJR Technologies
 
 # Drawer
 
