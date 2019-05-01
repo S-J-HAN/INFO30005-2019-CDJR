@@ -52,6 +52,7 @@ We're using:
 
 ## What's next?
 - Add APIs for sharing on social media
+- Improved aesthetics site wide
 - Add user generated tags for images
 - Allow users to sort images based on tag, upload date or likes on the explore page
 - Integrate AJAX and thus combine certain webpages (eg. 'edit profile' and 'profile' can be the same page)
