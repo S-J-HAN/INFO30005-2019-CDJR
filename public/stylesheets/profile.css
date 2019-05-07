@@ -2,22 +2,24 @@
   /* font-family: Helvetica; */
   font-size: 15px;
   padding-right: 20px;
-  color: black;
+  color: #112d4e;
 }
 
 .profileHeader {
   font-family: Futura;
   font-size: 20px;
   font-weight: 500;
-  color: black;
+  color: #112d4e;
 }
 
 .username {
+  padding-top: 20px;
+  
   font-family: Futura;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: normal;
 
-  color: black;
+  color: #112d4e;
 }
 
 .profilePage {
@@ -30,7 +32,7 @@
 
 .gallery a {
   text-decoration: none;
-  color: black;
+  color: #112d4e;
 }
 .gallery a:hover {
   text-decoration: underline;

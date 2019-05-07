@@ -43,6 +43,32 @@ body {
   box-shadow: 2px 2px #112d4e;
 }
 
+.inputBox {
+  background: none;
+  border: none;
+  border-width: 0;
+  outline: none;
+  shadow: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 100%;
+  font-family: Futura;
+
+  margin-bottom: 20px;
+}
+
+.inputBox:focus {
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.inputBox::placeholder {
+  color: #dbe2ef;
+}
+
 .btn-primary {
   background-color: #3f72af;
   border: #112d4e;
@@ -57,7 +83,13 @@ body {
 /* photo/index.css */
 .card {
   border: none;
-  background-color: #f9f7f7;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  overflow: hidden;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .card .image {
   opacity: 1;
@@ -66,8 +98,10 @@ body {
   width: 100%;
   height: auto;
   transition: 0.5s ease;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   backface-visibility: hidden;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 .card .image:hover {
   opacity: 0.5;
@@ -77,6 +111,9 @@ body {
   border-radius: 0;
 }
 .card-text {
+  position: absolute;
+  right: 10px;
+
   color: #112d4e;
   font-size: 1.3rem;
 }
@@ -86,9 +123,22 @@ body {
   border: none !important;
 }
 
+.likeButton.gallery {
+  position: absolute;
+  bottom: -45px;
+  left: -30px;
+  color: #112d4e;
+  /* This is weird but idk how else to make it work */
+}
+
 .likeform {
   margin: 0;
-  padding: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tagList {
+
 }
 
 #page-container {
@@ -112,6 +162,47 @@ body {
 .sticky-top.scrolled {
   background-color: #f9f7f7 !important;
   transition: background-color 200ms linear;
+}
+
+.sortOption {
+
+}
+
+.sortOption.header {
+  color: #dbe2ef;
+  font-family: Futura;
+  font-size: 20px;
+}
+
+.sortOption.button {
+  color: #dbe2ef;
+  font-family: Futura;
+  font-size: 22px;
+
+  border: 0px;
+  background: none;
+
+  padding-left: 0px;
+}
+
+.sortOption.tag {
+  font-size: 15px;
+}
+
+.sortOption.button.selected {
+  color: #112d4e;
+}
+
+.sortOption.button:hover {
+  color: #3f72af;
+}
+
+.sortOption.button.selected:hover {
+  color: #112d4e;
+}
+
+.sortOption.button:focus {
+  outline: 0;
 }
 
 .navlink:hover,
