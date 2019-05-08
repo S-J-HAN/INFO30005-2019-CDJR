@@ -8,6 +8,7 @@
           <h4 class="title main"><%= photo.name %></h4>
           <div class="title sub">By <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a></div>
           <div class="title sub">Created on <%= moment(photo.postAt).format('LL') %></div>
+          <div class="title sub"><%= photo.labels %></div>
           <div class="photoDescription"><%= photo.description %></div>
 
         <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>

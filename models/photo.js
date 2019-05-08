@@ -26,7 +26,8 @@ var photoSchema = new mongoose.Schema({
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
-    }]
+    }],
+    labels: [String]
 });
 
 module.exports = mongoose.model('Photo', photoSchema);

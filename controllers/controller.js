@@ -4,6 +4,7 @@ var passport = require('passport');
 var Photo = mongoose.model('Photo');
 var Comment = mongoose.model('Comment');
 var moment = require('moment');
+var vision = require('@google-cloud/vision');
 
 // ----------User method-------------
 var createUser = function(req, res){
@@ -27,7 +28,44 @@ var createUser = function(req, res){
 }
 
 // ---------Photo method--------------
-var createPhoto = function (req, res) {
+var createPhoto = async function (req, res) {
+
+  const client = new vision.ImageAnnotatorClient();
+  client.labelDetection(req.body.image)
+  .then(results => {
+    const labels = results[0].labelAnnotations;
+    var labelsFinal = []
+
+    for (var i=0; i<labels.length; i++) {
+      if (labels[i].description.includes("paint")) {
+        if (labels[i].accuracy > 0.8) {
+          labelsFinal.push(labels[i].description)
+        }
+      } else {
+        labelsFinal.push(labels[i].description)
+      }
+    }
+
+    var newPhoto = new Photo({
+        "name": req.body.name,
+        "description": req.body.description,
+        "image": req.body.image,
+        "author": {
+            id: req.user._id,
+            username: req.user.username
+        },
+        "labels": labelsFinal
+    });
+    newPhoto.save(function (err, newPhoto) {
+        if (!err) {
+            res.redirect('/photo')
+        } else {
+            res.sendStatus(400);
+        }
+    });
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
     var newPhoto = new Photo({
         "name": req.body.name,
         "description": req.body.description,
@@ -44,6 +82,30 @@ var createPhoto = function (req, res) {
             res.sendStatus(400);
         }
     });
+  });
+}
+
+var setLabel = async function (req, res) {
+  try {
+    const client = new vision.ImageAnnotatorClient();
+    const [result] = await client.labelDetection(req.body.image);
+    const labels = result.labelAnnotations;
+
+    Photo.findById(req.params.id, function(err, photo){
+        if(!err){
+          for (var i = 0; i < labels.length; i++) {
+            if ((labels[i].description.includes("paint") && labels[i].score > 0.8)||(!labels[i].description.includes("paint"))) {
+              photo.labels.push(labels[i].description);
+              console.log(labels[i].description);
+            }
+          }
+        } else {
+          console.log(err);
+        }
+    });
+  } catch(err) {
+    console.err(err)
+  }
 }
 
 var findAllPhotos = function (req, res) {
@@ -210,6 +272,7 @@ var removeFromLike = function (req, res) {
 
 module.exports.createUser = createUser;
 module.exports.createPhoto = createPhoto;
+module.exports.setLabel = setLabel
 module.exports.findAllPhotos = findAllPhotos;
 module.exports.findOnePhoto = findOnePhoto;
 module.exports.updateOnePhoto = updateOnePhoto;
