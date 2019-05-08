@@ -30,3 +30,30 @@ function readURL(input) {
 $('#imageUpload').change(function() {
   readURL(this);
 });
+
+function switchSort(element) {
+  var parent = document.getElementById('sortby buttons');
+  for (var i = 0; i < parent.children.length; i++) {
+    button = parent.children[i];
+    gallery = document.getElementById(button.id + ' gallery');
+    if (button != element) {
+      button.classList.remove('selected');
+      if (gallery) {
+        gallery.style.display = 'none';
+      }
+    } else {
+      button.classList.add('selected');
+      if (gallery) {
+        gallery.style.display = 'block';
+      }
+    }
+  }
+}
+
+function toggleTag(element) {
+  if (element.classList.contains('selected')) {
+    element.classList.remove('selected');
+  } else {
+    element.classList.add('selected');
+  }
+}
