@@ -1,116 +1,86 @@
 <% include ../partials/header %>
 <main>
-    <div class="container mt-4"s>
+  <div class="container mt-4">
+    <div class="sortOption button" id="sortby buttons">
+      <button class="sortOption button selected" id="popular" onclick="switchSort(this)">trending</button>
+      <button class="sortOption button" id="newest" onclick="switchSort(this)">newest</button>
+      <button class="sortOption button" id="oldest" onclick="switchSort(this)">oldest</button>
+    </div>
 
-      <div class="sortOption button" id="sortby buttons">
-        <button class="sortOption button selected" id="popular" onclick="switchSort(this)">trending</button>
-        <button class="sortOption button" id="newest" onclick="switchSort(this)">newest</button>
-        <button class="sortOption button" id="oldest" onclick="switchSort(this)">oldest</button>
-        <script>
-          function switchSort(element) {
-            var parent = document.getElementById("sortby buttons")
-            for (var i=0; i<parent.children.length; i++) {
-              button = parent.children[i]
-              gallery = document.getElementById(button.id + " gallery")
-              if (button != element) {
-                button.classList.remove("selected")
-                if (gallery) {
-                  gallery.style.display = "none"
-                }
-              } else {
-                button.classList.add("selected")
-                if (gallery) {
-                  gallery.style.display = "block"
-                }
-              }
-            }
-          }
-        </script>
+    <div class="tagList button" id="tag buttons">
+      <button class="sortOption button tag selected" id="popular" onclick="toggleTag(this)">#sketch</button>
+      <button class="sortOption button tag" id="newest" onclick="toggleTag(this)">#acrylic</button>
+      <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#watercolour</button>
+      <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#lineart</button>
+      <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#lifedrawing</button>
+      <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#photography</button>
+      <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#copicmarker</button>
+    </div>
+
+    <input class="inputBox" type="text" placeholder="search..."></input>
+
+    <div class="row justify-content-center" id="newest gallery" style="display:none">
+      <div class="card-columns animated animatedFadeInUp fadeInUp">
+        <% Array.from(photos).sort(function(a, b) {return Date(a.postAt) - Date(b.postAt); }).reverse().forEach(function(photo){ %>
+            <div class="card text-white">
+                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
+                <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
+                    <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
+                        <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
+                        <h4 class="card-text"><%= photo.name %></h4>
+                    </form>
+                <% }else{ %>
+                    <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST">
+                        <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
+                        <h4 class="card-text"><%= photo.name %></h4>
+                    </form>
+                <% } %>
+            </div>
+        <% }) %>
       </div>
+    </div>
 
-      <div class="tagList button" id="tag buttons">
-        <button class="sortOption button tag selected" id="popular" onclick="toggleTag(this)">#sketch</button>
-        <button class="sortOption button tag" id="newest" onclick="toggleTag(this)">#acrylic</button>
-        <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#watercolour</button>
-        <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#lineart</button>
-        <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#lifedrawing</button>
-        <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#photography</button>
-        <button class="sortOption button tag" id="oldest" onclick="toggleTag(this)">#copicmarker</button>
-        <script>
-          function toggleTag(element) {
-              if (element.classList.contains("selected")) {
-                element.classList.remove("selected")
-              } else {
-                element.classList.add("selected")
-              }
-          }
-        </script>
+    <div class="row justify-content-center" id="oldest gallery" style="display:none">
+      <div class="card-columns animated animatedFadeInUp fadeInUp">
+        <% Array.from(photos).sort(function(a, b) {return Date(a.postAt) - Date(b.postAt); }).forEach(function(photo){ %>
+            <div class="card text-white">
+                <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
+                <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
+                    <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
+                        <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
+                        <h4 class="card-text"><%= photo.name %></h4>
+                    </form>
+                <% }else{ %>
+                    <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST">
+                        <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
+                        <h4 class="card-text"><%= photo.name %></h4>
+                    </form>
+                <% } %>
+            </div>
+        <% }) %>
       </div>
-
-      <input class="inputBox" type="text" placeholder="search..."></input>
-
-      <div class="row justify-content-center" id="newest gallery" style="display:none">
-          <div class="card-columns animated animatedFadeInUp fadeInUp">
-            <% Array.from(photos).sort(function(a, b) {return Date(a.postAt) - Date(b.postAt); }).reverse().forEach(function(photo){ %>
-                <div class="card text-white">
-                    <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
-                    <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
-                        <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
-                            <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
-                            <h4 class="card-text"><%= photo.name %></h4>
-                        </form>
-                    <% }else{ %>
-                        <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST">
-                            <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
-                            <h4 class="card-text"><%= photo.name %></h4>
-                        </form>
-                    <% } %>
-                </div>
-            <% }) %>
-          </div>
-     </div>
-
-     <div class="row justify-content-center" id="oldest gallery" style="display:none">
-         <div class="card-columns animated animatedFadeInUp fadeInUp">
-           <% Array.from(photos).sort(function(a, b) {return Date(a.postAt) - Date(b.postAt); }).forEach(function(photo){ %>
-               <div class="card text-white">
-                   <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
-                   <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
-                       <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
-                           <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
-                           <h4 class="card-text"><%= photo.name %></h4>
-                       </form>
-                   <% }else{ %>
-                       <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST">
-                           <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
-                           <h4 class="card-text"><%= photo.name %></h4>
-                       </form>
-                   <% } %>
-               </div>
-           <% }) %>
-         </div>
     </div>
 
     <div class="row justify-content-center" id="popular gallery" style="display:block">
-        <div class="card-columns animated animatedFadeInUp fadeInUp">
-            <% Array.from(photos).sort(function(a, b) {return a.likes - b.likes; }).reverse().forEach(function(photo){ %>
-                <div class="card text-white">
-                    <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
-                    <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
-                        <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
-                            <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
-                            <h4 class="card-text"><%= photo.name %></h4>
-                        </form>
-                    <% }else{ %>
-                        <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST">
-                            <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
-                            <h4 class="card-text"><%= photo.name %></h4>
-                        </form>
-                    <% } %>
-                </div>
-            <% }) %>
-        </div>
-   </div>
+      <div class="card-columns animated animatedFadeInUp fadeInUp">
+        <% Array.from(photos).sort(function(a, b) {return a.likes - b.likes; }).reverse().forEach(function(photo){ %>
+          <div class="card text-white">
+            <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>"></a>
+            <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
+              <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
+                  <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>
+                  <h4 class="card-text"><%= photo.name %></h4>
+              </form>
+            <% }else{ %>
+              <form class="likeform form-inline" action="/photo/<%= photo._id %>/like" method="POST">
+                  <button class="likeButton" type="submit" id="addLike"><i class="far fa-heart mr-1"></i><%= photo.likes %></button>
+                  <h4 class="card-text"><%= photo.name %></h4>
+              </form>
+            <% } %>
+          </div>
+        <% }) %>
+      </div>
+    </div>
   </div>
 </main>
 <% include ../partials/footerScript %>

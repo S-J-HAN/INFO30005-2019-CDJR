@@ -2,25 +2,29 @@
 <div class="container">
   <div class="row">
     <div class="col-6 col-lg-7">
-      <div class="photoBackground animated animatedFadeInUp fadeInUp">
-        <img class="photoImage" src="<%= photo.image %>">
+      <div class="card photoBackground animated animatedFadeInUp fadeInUp">
+        <img class="photoImage card-img-top" src="<%= photo.image %>">
 
-          <h4 class="title main"><%= photo.name %></h4>
-          <div class="title sub">By <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a></div>
-          <div class="title sub">Created on <%= moment(photo.postAt).format('LL') %></div>
-          <div class="title sub"><%= photo.labels %></div>
-          <div class="photoDescription"><%= photo.description %></div>
-
-        <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
-          <div class="form-row ml-4 mt-3">
-            <form id="form-inline" action="/photo/<%= photo._id %>/edit" menthod="GET">
-              <button class="btn btn-primary" id="edit-button"><i class="fas fa-pen"></i>  Edit</button>
-            </form>
-            <form class="form-inline" id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-danger" id="delete-button"><i class="fas fa-trash-alt"></i>  Delete</button>
-            </form>
+          <div class="card-body">
+            <div class="card-title title main">
+              <%= photo.name %>
+              <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
+                <div class="form-row photo-form">
+                  <form class="form-group" action="/photo/<%= photo._id %>/edit" menthod="GET">
+                    <button class="button-link" id="edit-photo">Edit</button>
+                  </form>
+                  <form class="form-group" id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
+                    <button class="button-link" id="delete-photo">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+            <div class="title sub">By <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a></div>
+            <div class="title sub mb-3">Created on <%= moment(photo.postAt).format('LL') %></div>
+            <div class="photoDescription"><%= photo.description %></div>
           </div>
-        <% } %>
+
+
       </div>
     </div>
     <div class="col-6 col-lg-5">
@@ -32,11 +36,15 @@
           <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
             <div class="user-comment-header">
               <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
-              <div class="user-alter-comment">
-                <a href="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" id="edit-comment">edit</a>
-                <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
-                    <input id="delete-comment" type="submit" value="delete">
+              <div class="user-alter-comment button-link">
+
+                <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" method="GET">
+                  <button class="button-link edit-comment">Edit</button>
                 </form>
+                <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
+                  <button class="button-link delete-comment">Delete</button>
+                </form>
+
               </div>
             </div>
             <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>

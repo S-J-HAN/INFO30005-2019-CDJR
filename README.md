@@ -2,7 +2,7 @@
 
 # Drawer
 
-Drawer is a website for cultivating creativity. We provide a place for amateur and professional artists alike to compile, share and discuss their artwork. By doing so, we hope to create a platform that gives all budding creatives, young and old, the confidence and support to try and create new things. We believe that this will have far reaching societal benefits that go beyond the world of art.
+Drawer is a website for cultivating creativity. We provide a place for beginner and expert artists alike to compile, share and discuss their artwork. By doing so, we hope to create a platform that gives budding creatives both young and old the confidence and support to try and create new things. We believe that this will have far reaching societal benefits that go beyond the world of art.
 
 ## Usage
 
@@ -59,6 +59,7 @@ We're using:
 ## What's next?
 
 - Add APIs for sharing on social media
+- Add google cloud vision API for automatic tagging
 - Improved aesthetics site wide
 - Add user generated tags for images
 - Allow users to sort images based on tag, upload date or likes on the explore page
