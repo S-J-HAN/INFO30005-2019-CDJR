@@ -86,7 +86,7 @@ var deleteOnePhoto = function(req, res){
     })
 }
 
-//display user's previous work and sort by descending date (new -> old) 
+//display user's previous work and sort by descending date (new -> old)
 var findAllPhotosByUsername = function (req, res) {
     User.findOne({username: req.params.username}, function (err, foundUser) {
         Photo.find({'author.username': req.params.username}).sort({postAt: 'desc'}).exec(
@@ -137,7 +137,7 @@ var createComment = function(req, res){
                     req.flash('error', 'something went wrong');
                     console.log(err);
                 }
-            }) 
+            })
         }else{
             console.log(err);
             res.redirect('/photo');
