@@ -2,6 +2,9 @@
   width: 100%;
   top: 0px;
   vertical-align: top;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .photoBackground {
@@ -12,21 +15,45 @@
 
   animation-name: loadPhoto;
   animation-duration: 0.7s;
+
+  margin-bottom: 30px;
+  border-radius: 10px;
 }
 
-#show-photo-title {
+.photoDescription {
+  overflow-wrap: break-word;
+  font-size: 16px;
+  hyphens: auto;
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.title {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.title.main {
+  margin-top: 15px;
   font-family: Futura;
   font-size: 30px;
-  word-wrap: break-word;
-  width: inherit;
-  animation-name: loadDescription;
-  animation-duration: 0.7s;
-  animation-delay: 0.1s;
+
+  color: #112d4e;
 }
-.photoDiscription {
-  overflow-wrap: break-word;
-  font-size: 20px;
-  hyphens: auto;
+
+.title.sub {
+  font-size: 15px;
+  color: #112d4e;
+}
+
+.title.subdued {
+  font-size: 30px;
+  color: #dbe2ef;
+
+  margin-left: 0px;
 }
 
 #edit-button {
@@ -65,7 +92,7 @@
   color: #3f72af;
 }
 
-#comment-text {
+.comment-text {
   font-family: Helvetica;
   font-size: 14px;
 }
@@ -83,8 +110,9 @@
 #delete-comment {
   margin-right: 20px;
   font-family: Helvetica;
-  color: white;
-  background-color: #112d4e;
+  color: #dbe2ef;
+  background-color: #f9f7f7;
+
   border-radius: 0px;
   border-width: 0;
 }
@@ -95,8 +123,8 @@
   padding-right: 5px;
   font-family: Helvetica;
   text-decoration: none;
-  color: white;
-  background-color: #3f72af;
+  color: #dbe2ef;
+  background-color: none;
   border-radius: 0px;
   border-width: 0;
 }
@@ -116,6 +144,12 @@
 
 #input-comment {
   width: inherit;
+}
+
+.commentInput {
+  background: transparent;
+  background-color: none;
+  border: none;
 }
 
 .comment-date {
