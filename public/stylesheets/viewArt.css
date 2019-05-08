@@ -1,4 +1,4 @@
-.photoImage {
+/* .photoImage {
   width: 100%;
   top: 0px;
   vertical-align: top;
@@ -29,7 +29,7 @@
   margin-right: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
-}
+/* }
 
 .title {
   text-align: left;
@@ -52,25 +52,46 @@
 .title.subdued {
   font-size: 30px;
   color: #dbe2ef;
-
   margin-left: 0px;
+}  */
+
+.title.main {
+  font-family: Futura;
+  font-size: 30px;
+  color: #112d4e;
+  display: inline;
 }
 
-#edit-button {
-  float: left;
-  margin-right: 5px;
-  height: 40px;
+.title.sub {
+  font-size: 15px;
+  color: #112d4e;
 }
 
-#delete-button {
-  float: left;
-  height: 40px;
+.title.subdued {
+  font-size: 30px;
+  color: #dbe2ef;
 }
 
-#buttons {
-  position: relative;
-  margin-top: 10px;
-  margin-left: 20px;
+.photoDescription {
+  overflow-wrap: break-word;
+  font-size: 16px;
+  hyphens: auto;
+}
+
+.button-link {
+  background: transparent;
+  border: none !important;
+  color: #dbe2ef;
+}
+
+.button-link:hover {
+  color: #3f72af;
+}
+
+.photo-form {
+  font-size: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
 }
 
 #back-button:hover {
@@ -107,21 +128,22 @@
   display: flex;
 }
 
-#delete-comment {
-  margin-right: 20px;
-  font-family: Helvetica;
+.delete-comment {
+  font-size: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  background: transparent;
+  border: none !important;
   color: #dbe2ef;
-  background-color: #f9f7f7;
-
-  border-radius: 0px;
-  border-width: 0;
 }
 
-#edit-comment {
+.edit-comment {
   margin-right: 10px;
   padding-left: 5px;
   padding-right: 5px;
-  font-family: Helvetica;
+  font-size: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
   text-decoration: none;
   color: #dbe2ef;
   background-color: none;
