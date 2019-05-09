@@ -1,7 +1,7 @@
 <% include ../partials/header %>
     <div class="container">
         <h1 class="text-center mb-3">Upload new image</h1>
-        <form action="/photo" method="POST" >
+        <form action="/photo" enctype="multipart/form-data" method="POST" >
             <div class="row">
                 <div class="col-6 mr-5">
                     <div id="imagePreview">
@@ -9,7 +9,7 @@
                     </div>
                     <div class="input-group mt-3">
                         <label class="custom-file-label" for="imageUpload">Upload Image File</label>
-                        <input class="custom-file-input" id="imageUpload" type="file" name="image" accept="image/png, image/jpeg">
+                        <input class="custom-file-input" id="imageUpload" type="file" name="imagefile" accept="image/png, image/jpeg">
                     </div>
                     <div class="form-group mt-3">
                         <label for="imageURL">Upload by URL</label>
