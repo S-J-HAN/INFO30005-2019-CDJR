@@ -9,6 +9,27 @@ var User = require('./models/user');
 var Photo = require('./models/photo');
 var Comment = require('./models/comment');
 var Moment = require('moment');
+var firebase = require('firebase');
+
+//Initialize Firebase.
+var config = {
+    apiKey: "AIzaSyDaOXY9ckdtA-WC-Pd6pGkLOw0RmbniGtE",
+    authDomain: "zeta-verbena-238512.firebaseapp.com",
+    databaseURL: "https://zeta-verbena-238512.firebaseio.com",
+    projectId: "zeta-verbena-238512",
+    storageBucket: "zeta-verbena-238512.appspot.com",
+    messagingSenderId: "264680422704",
+    appId: "1:264680422704:web:5a603c9ad12accbc"
+  };
+firebase.initializeApp(config);
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./zeta-verbena-238512-firebase-adminsdk-efppm-fa368e2842.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://zeta-verbena-238512.firebaseio.com"
+});
 
 app.use(bodyParser.urlencoded({
     extended: true

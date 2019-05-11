@@ -21,6 +21,8 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 
 - The explore page is a full gallery of user works
 - You can click on any of the photos to view it more closely, and if you’re logged in, you can even give it a like!
+- You can also search for photos by title, user, medium or even subject matter! Images uploaded to our platform are passed through the Google Cloud Vision API, which allows us to acquire accurate, automated tags for stored images.
+- You can also sort images by popularity and upload date
 - Visit the explore page at [Explore](https://drawer-by-cdjr.herokuapp.com/photo)
 
 #### View Art
@@ -59,10 +61,7 @@ We're using:
 ## What's next?
 
 - Add APIs for sharing on social media
-- Add google cloud vision API for automatic tagging
 - Improved aesthetics site wide
-- Add user generated tags for images
-- Allow users to sort images based on tag, upload date or likes on the explore page
 - Integrate AJAX and thus combine certain webpages (eg. 'edit profile' and 'profile' can be the same page)
 
 ## Contributing

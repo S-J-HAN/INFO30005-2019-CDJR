@@ -5,6 +5,9 @@ var User = require('../models/user.js');
 var controller = require('../controllers/controller.js');
 var middleware = require('../middleware');
 var flash = require('connect-flash');
+var multer = require('multer');
+var storage = multer.memoryStorage()
+var upload = multer({ storage: storage })
 
 //get all photos
 router.get('/', controller.findAllPhotos);
@@ -15,7 +18,7 @@ router.get('/new', middleware.isLoggedIn, function (req, res) {
 })
 
 //CREATE new photos - create route
-router.post('/', middleware.isLoggedIn, controller.createPhoto);
+router.post('/', middleware.isLoggedIn, upload.single('imagefile'), controller.createPhoto);
 
 //SHOW route - show more info about one photo
 router.get('/:id', controller.findOnePhoto);
