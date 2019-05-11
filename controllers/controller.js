@@ -39,10 +39,10 @@ var createPhoto = async function (req, res) {
     for (var i=0; i<labels.length; i++) {
       if (labels[i].description.includes("paint")) {
         if (labels[i].accuracy > 0.8) {
-          labelsFinal.push(labels[i].description)
+          labelsFinal.push(labels[i].description.toLowerCase())
         }
       } else {
-        labelsFinal.push(labels[i].description)
+        labelsFinal.push(labels[i].description.toLowerCase())
       }
     }
 

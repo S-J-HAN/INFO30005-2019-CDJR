@@ -2,10 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col-6 col-lg-7">
-      <div class="card photoBackground animated animatedFadeInUp fadeInUp">
-        <img class="photoImage card-img-top" src="<%= photo.image %>">
+      <div class="card photoBackground animated animatedFadeInUp fadeInUp" style="border-radius:10px;">
+        <img class="photoImage card-img-top" src="<%= photo.image %>" style="border-top-left-radius:10px; border-top-right-radius:10px">
 
-          <div class="card-body">
+          <div class="card-body" style="min-height: 35vh">
             <div class="card-title title main">
               <%= photo.name %>
               <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
@@ -22,6 +22,7 @@
             <div class="title sub">By <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a></div>
             <div class="title sub mb-3">Created on <%= moment(photo.postAt).format('LL') %></div>
             <div class="photoDescription"><%= photo.description %></div>
+            <div class="title sub"><%= photo.labels %></div>
           </div>
 
 
@@ -55,6 +56,9 @@
           <p class="comment-text"><%= comment.text %></p>
           <hr>
         <% })%>
+        <% if (photo.comments.length == 0 && !currentUser) { %>
+          <div style="font-family: Helvetica; color: #dbe2ef;">No comments yet...</div>
+        <% } %>
       </div>
 
       <div>
