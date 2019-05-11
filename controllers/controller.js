@@ -5,6 +5,14 @@ var Photo = mongoose.model('Photo');
 var Comment = mongoose.model('Comment');
 var moment = require('moment');
 var vision = require('@google-cloud/vision');
+var multer = require('multer');
+var config = {
+  projectId: 'zeta-verbena-238512',
+  keyFilename: "./zeta-verbena-238512-firebase-adminsdk-efppm-fa368e2842.json"
+};
+const {Storage} = require('@google-cloud/storage');
+const gcs = new Storage(config);
+
 
 // ----------User method-------------
 var createUser = function(req, res){
