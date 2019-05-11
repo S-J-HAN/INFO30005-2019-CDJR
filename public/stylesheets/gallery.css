@@ -141,6 +141,7 @@
 
 .sortby.button:hover {
   color: #3f72af;
+  text-decoration: none;
 }
 
 .sortby.button.selected:hover {

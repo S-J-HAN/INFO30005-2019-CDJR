@@ -63,11 +63,14 @@
 
       <div>
         <% if (currentUser) { %>
+          <script>
+            autosize(document.getElementById('comment'))
+          </script>
           <a href="/profile/<%= currentUser.username %>" id="comment-username"><%= currentUser.username %></a>
           <div class="comment-date"><%= moment(new Date()).format('LL') %></div>
           <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
                 <textarea class="form-control commentInput comment-text" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
-                <button class="btn btn-primary mt-3" type="">Submit</button>
+                <button class="sortby button" type="">Submit</button>
           </form>
         <% } %>
       </div>
