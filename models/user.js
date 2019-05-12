@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
     age: Number,
     city: String,
     password: String,
+    about: String,
     date: {
         type: Date,
         default: Date.now
