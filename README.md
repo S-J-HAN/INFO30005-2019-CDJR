@@ -19,7 +19,7 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 
 ###### Implementation details
 - controllers: /controllers/controller.js
-- views: /views/register.ejs
+- views: /views/register.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
 - routes: /routers/index.js
 - models: /models/user.js
 
@@ -33,7 +33,7 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 
 ###### Implementation details
 - controllers: /controllers/controller.js
-- views: /views/photos/index.ejs
+- views: /views/photos/index.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
 - routes: /routers/photo.js
 - models: /models/photo.js
 
@@ -46,7 +46,7 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 
 ###### Implementation details
 - controllers: /controllers/controller.js
-- views: /views/photos/show.ejs
+- views: /views/photos/show.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
 - routes: /routers/photo.js, /routers/comment.js
 - models: /models/photo.js, /models/comment.js
 
@@ -61,7 +61,7 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 
 ###### Implementation details
 - controllers: /controllers/controller.js
-- views: /views/profile/profile.ejs
+- views: /views/profile/profile.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
 - routes: /routers/profile.js, /routers/photo.js
 - models: /models/user.js
 
