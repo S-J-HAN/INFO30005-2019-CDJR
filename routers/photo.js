@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Photo = require('../models/photo.js');
+var ChildPhoto = require('../models/childphoto.js');
 var User = require('../models/user.js');
 var controller = require('../controllers/controller.js');
 var middleware = require('../middleware');
@@ -18,7 +19,7 @@ router.get('/new', middleware.isLoggedIn, function (req, res) {
 })
 
 //CREATE new photos - create route
-router.post('/', middleware.isLoggedIn, upload.single('imagefile'), controller.createPhoto);
+router.post('/', middleware.isLoggedIn, upload.array('imagefile', 20), controller.createPhoto);
 
 //SHOW route - show more info about one photo
 router.get('/:id', controller.findOnePhoto);
