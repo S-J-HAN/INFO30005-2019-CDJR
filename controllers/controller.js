@@ -36,42 +36,47 @@ var createUser = function(req, res){
 }
 
 // ---------Photo method--------------
-var createPhoto = async function (req, res) {
+var createPhoto = function (req, res) {
+    var bucket = gcs.bucket('gs://zeta-verbena-238512.appspot.com');
+    const gcsname = `${Date.now()}-${req.file.originalname}`;
+    const file = bucket.file(gcsname);
 
-  const client = new vision.ImageAnnotatorClient();
-  client.labelDetection(req.body.image)
-  .then(results => {
-    const labels = results[0].labelAnnotations;
-    var labelsFinal = []
-
-    for (var i=0; i<labels.length; i++) {
-      if (labels[i].description.includes("paint")) {
-        if (labels[i].accuracy > 0.8) {
-          labelsFinal.push(labels[i].description)
-        }
-      } else {
-        labelsFinal.push(labels[i].description)
-      }
-    }
-
-    var newPhoto = new Photo({
-        "name": req.body.name,
-        "description": req.body.description,
-        "image": req.body.image,
-        "author": {
-            id: req.user._id,
-            username: req.user.username
+    const stream = file.createWriteStream({
+        metadata: {
+            contentType: req.file.mimetype
         },
-        "labels": labelsFinal
+        resumable: false
     });
-    newPhoto.save(function (err, newPhoto) {
-        if (!err) {
-            res.redirect('/photo')
-        } else {
-            res.sendStatus(400);
-        }
+
+    stream.on('error', (err) => {
+        req.file.cloudStorageError = err;
     });
-  })
+
+    stream.on('finish', () => {
+	      return file.makePublic()
+        .then(() => {
+	          var imgurl = 'https://storage.googleapis.com/'+bucket.name+'/'+gcsname;
+            var newPhoto = new Photo({
+            "name": req.body.name,
+            "description": req.body.description,
+            "image": imgurl,
+            "date": req.body.date,
+            "author": {
+                id: req.user._id,
+                username: req.user.username
+            }
+            });
+	      newPhoto.save(function (err, newPhoto) {
+            if (!err) {
+                res.redirect('/photo')
+            } else {
+                res.sendStatus(400);
+            }
+        });
+	  });
+
+    stream.end(req.file.buffer);
+	
   .catch(err => {
     console.error('ERROR:', err);
     var newPhoto = new Photo({
