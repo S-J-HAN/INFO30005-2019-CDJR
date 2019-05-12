@@ -2,15 +2,15 @@
 <div class="container">
   <div class="row">
     <div class="col-6 col-lg-7">
-      <div class="card photoBackground animated animatedFadeInUp fadeInUp">
-        <img class="photoImage card-img-top" src="<%= photo.image %>">
+      <div class="card photoBackground animated animatedFadeInUp fadeInUp" style="border-radius:10px;">
+        <img class="photoImage card-img-top" id="photoImage" style="border-top-left-radius:10px; border-top-right-radius:10px">
 
-          <div class="card-body">
+          <div class="card-body" style="min-height: 35vh">
             <div class="card-title title main">
               <%= photo.name %>
               <% if(currentUser && photo.author.id.equals(currentUser._id)){ %>
                 <div class="form-row photo-form">
-                  <form class="form-group" action="/photo/<%= photo._id %>/edit" menthod="GET">
+                  <form class="form-group" action="/photo/<%= photo._id %>/edit" method="GET">
                     <button class="button-link" id="edit-photo">Edit</button>
                   </form>
                   <form class="form-group" id="delete-form" action="/photo/<%= photo._id %>?_method=DELETE" method="POST">
@@ -22,13 +22,36 @@
             <div class="title sub">By <a href="/profile/<%= photo.author.username %>" id="comment-username"><%= photo.author.username %></a></div>
             <div class="title sub mb-3">Created on <%= moment(photo.postAt).format('LL') %></div>
             <div class="photoDescription"><%= photo.description %></div>
+            <!-- <div class="title sub"><%= photo.labels %></div> -->
           </div>
 
 
       </div>
     </div>
     <div class="col-6 col-lg-5">
-
+    <br>
+      <button onclick="nextChild()">View Next Child</button>
+    <br>  
+      <script>
+        console.log(<%= children.length %>);
+        var image = document.getElementById('photoImage');
+        image.src="<%= photo.image %>";
+        var childrenlist="<%= children %>";
+        childrenlist=childrenlist.split(',');
+        var current_image_index=childrenlist.length;
+        var nextChild = function(){
+          current_image_index-=1;
+          if(current_image_index==-1){
+            current_image_index=childrenlist.length;
+            image.src="<%= photo.image %>";
+          }
+          else{
+            image.src=childrenlist[current_image_index];
+          }
+        }
+          
+        
+      </script>
       <h3 class="title subdued">comments</h3>
 
       <div class="CommentDetail">
@@ -37,14 +60,12 @@
             <div class="user-comment-header">
               <a href="/profile/<%= comment.author.username %>" id="comment-username"><%= comment.author.username %></a>
               <div class="user-alter-comment button-link">
-
                 <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>/edit" method="GET">
                   <button class="button-link edit-comment">Edit</button>
                 </form>
                 <form action="/photo/<%= photo._id %>/comment/<%= comment._id %>?_method=DELETE" method="POST">
                   <button class="button-link delete-comment">Delete</button>
                 </form>
-
               </div>
             </div>
             <div class="comment-date"><%= moment(comment.postAt).format('LL') %></div>
@@ -55,15 +76,22 @@
           <p class="comment-text"><%= comment.text %></p>
           <hr>
         <% })%>
+        <% if (photo.comments.length == 0 && !currentUser) { %>
+          <div style="font-family: Helvetica; color: #dbe2ef;">No comments yet...</div>
+        <% } %>
       </div>
 
       <div>
         <% if (currentUser) { %>
+          <script>
+            autosize(document.getElementById('comment'))
+             
+          </script>
           <a href="/profile/<%= currentUser.username %>" id="comment-username"><%= currentUser.username %></a>
           <div class="comment-date"><%= moment(new Date()).format('LL') %></div>
           <form class="form-group" action="/photo/<%= photo._id %>/comment" method="POST" id="post-comment">
                 <textarea class="form-control commentInput comment-text" id="comment" rows="6" type="text" name="comment[text]" placeholder="leave a comment..." id="input-comment"></textarea>
-                <button class="btn btn-primary mt-3" type="">Submit</button>
+                <button class="sortby button" type="">Submit</button>
           </form>
         <% } %>
       </div>
