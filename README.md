@@ -17,6 +17,12 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 - To use drawer, first sign up at [Register](https://drawer-by-cdjr.herokuapp.com/register)
 - You can also view artwork without logging in, but the full experience requires an account.
 
+###### Implementation details
+- controllers: /controllers/controller.js
+- views: /views/register.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
+- routes: /routers/index.js
+- models: /models/user.js
+
 #### Explore
 
 - The explore page is a full gallery of user works
@@ -25,19 +31,39 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 - You can also sort images by popularity and upload date
 - Visit the explore page at [Explore](https://drawer-by-cdjr.herokuapp.com/photo)
 
+###### Implementation details
+- controllers: /controllers/controller.js
+- views: /views/photos/index.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
+- routes: /routers/photo.js
+- models: /models/photo.js
+
 #### View Art
 
 - If you’re logged in, every individual artwork uploaded to our platform is likeable and commentable
 - This gives you the power to have in depth conversations with other users, allowing you to learn from and give feedback to them!
+- If you're viewing your own artwork, you can also edit or delete the post.
 - You can check out a sample artwork page at [Show Page](https://drawer-by-cdjr.herokuapp.com/photo/5cc47500a6a81060a789d253)
+
+###### Implementation details
+- controllers: /controllers/controller.js
+- views: /views/photos/show.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
+- routes: /routers/photo.js, /routers/comment.js
+- models: /models/photo.js, /models/comment.js
 
 #### Profile Page
 
 - Every user on Drawer gets a profile page, which is open to the public to view.
-- The profile page includes a brief self-description, and more importantly, a timeline of all of the user’s past artworks. This timeline is a core part of the drawer experience - we hope to highlight not only every artist’s best works, but also their journeys of progress and improvement.
+- The profile page includes a brief self-description and a gallery of all of their uploaded works
+- This gallery can be sorted by 'journey', 'highlights', 'latest' and 'earliest'. This makes it super easy for people to see both an artist's career progress and their top works
 - We hope that doing so will empower novice artists to see that they too can one day be great.
 - Also accessible from the profile page is a secondary gallery of all works liked by a certain user.
 - An example profile page can be found at [Profile](https://drawer-by-cdjr.herokuapp.com/profile/Jerome)
+
+###### Implementation details
+- controllers: /controllers/controller.js
+- views: /views/profile/profile.ejs, /views/partials/header.ejs, /views/partials/footer.ejs
+- routes: /routers/profile.js, /routers/photo.js
+- models: /models/user.js
 
 #### Upload Artworks
 
@@ -50,8 +76,9 @@ Alternatively, make a pull request and run ‘node app’. Remember to install t
 
 We're using:
 
-- html/css and ejs for frontend
-- MongoDB, Firebase for backend
+- html/css and ejs for frontend presentation
+- js for behaviour (eg. search, sorting)
+- MongoDB, Firebase for backend content
 - passport.js for authorisation
 - moment.js for timestamps
 - express
