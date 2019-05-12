@@ -78,6 +78,7 @@ var createPhoto = async function(req, res) {
         name: req.body.name,
         description: req.body.description,
         image: req.body.image,
+        postAt: req.body.date,
         author: {
           id: req.user._id,
           username: req.user.username
