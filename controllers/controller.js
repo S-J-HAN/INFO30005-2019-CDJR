@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var passport = require('passport');
 var Photo = mongoose.model('Photo');
+var ChildPhoto = mongoose.model('ChildPhoto');
 var Comment = mongoose.model('Comment');
 var moment = require('moment');
 var vision = require('@google-cloud/vision');
@@ -35,53 +36,78 @@ var createUser = function(req, res) {
 };
 
 // ---------Photo method--------------
-var createPhoto = async function(req, res) {
-  const client = new vision.ImageAnnotatorClient();
-  client
-    .labelDetection(req.body.image)
-    .then(results => {
-      const labels = results[0].labelAnnotations;
-      var labelsFinal = [];
+var createPhoto = function (req, res) {
+    var bucket = gcs.bucket('gs://zeta-verbena-238512.appspot.com');
+    const gcsname = `${Date.now()}-${req.files[0].originalname}`;
+    const file = bucket.file(gcsname);
+    const stream = file.createWriteStream({
+	    metadata: {
+	    contentType: req.files[0].mimetype
+            },
+	    resumable: false
+    });
+    stream.on('error', (err) => {
+        req.files[0].cloudStorageError = err;
+    });
 
-      for (var i = 0; i < labels.length; i++) {
-        if (labels[i].description.includes('paint')) {
-          if (labels[i].accuracy > 0.8) {
-            labelsFinal.push(labels[i].description.toLowerCase());
+    stream.on('finish', () => {
+	return file.makePublic()
+        .then(() => {
+    
+      const client = new vision.ImageAnnotatorClient();
+      client
+        .labelDetection(req.body.image)
+        .then(results => {
+          const labels = results[0].labelAnnotations;
+          var labelsFinal = [];
+
+          for (var i = 0; i < labels.length; i++) {
+            if (labels[i].description.includes('paint')) {
+              if (labels[i].accuracy > 0.8) {
+                labelsFinal.push(labels[i].description.toLowerCase());
+              }
+            } else {
+              labelsFinal.push(labels[i].description.toLowerCase());
+            }
           }
-        } else {
-          labelsFinal.push(labels[i].description.toLowerCase());
-        }
-      }
-      console.log(req.body);
-      var newPhoto = new Photo({
+    
+        var imgurl = 'https://storage.googleapis.com/'+bucket.name+'/'+gcsname;
+        var newPhoto = new Photo({
+          name: req.body.name,
+          description: req.body.description,
+          image: imgurl,
+          date: req.body.date,
+          author: {
+                    id: req.user._id,
+                    username: req.user.username
+                      },
+          labels: labelsFinal
+        });
+        newPhoto.save(function (err, newPhoto) {
+            if (!err) {
+              if(req.files.length==1){
+                  res.redirect('/photo')
+              }
+              else{
+                  createChildPhoto(req.files.slice(1), newPhoto._id, res);	    
+              }
+            } else {
+              res.sendStatus(400);
+            }
+	      });
+	    });  
+    });
+    stream.end(req.files[0].buffer);
+	
+  .catch(err => {
+    console.error('ERROR:', err);
+    var newPhoto = new Photo({
         name: req.body.name,
         description: req.body.description,
         image: req.body.image,
         author: {
-          id: req.user._id,
-          username: req.user.username
-        },
-        postAt: req.body.date,
-        labels: labelsFinal
-      });
-      newPhoto.save(function(err, newPhoto) {
-        if (!err) {
-          res.redirect('/photo');
-        } else {
-          res.sendStatus(400);
-        }
-      });
-    })
-    .catch(err => {
-      console.error('ERROR:', err);
-      var newPhoto = new Photo({
-        name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-        postAt: req.body.date,
-        author: {
-          id: req.user._id,
-          username: req.user.username
+            id: req.user._id,
+            username: req.user.username
         }
       });
       newPhoto.save(function(err, newPhoto) {
@@ -94,7 +120,49 @@ var createPhoto = async function(req, res) {
     });
 };
 
-var setLabel = async function(req, res) {
+var createChildPhoto = function(childfilelist, parentfileID, res) {
+    var bucket = gcs.bucket('gs://zeta-verbena-238512.appspot.com');
+    const gcsname = `${Date.now()}-${childfilelist[0].originalname}`;
+    const file = bucket.file(gcsname);
+    const stream = file.createWriteStream({
+	    metadata: {
+	    contentType: childfilelist[0].mimetype
+            },
+	    resumable: false
+    });
+    stream.on('error', (err) => {
+        childfilelist[0].cloudStorageError = err;
+    });
+
+    stream.on('finish', () => {
+	return file.makePublic()
+        .then(() => {
+	    var imgurl = 'https://storage.googleapis.com/'+bucket.name+'/'+gcsname;
+	    var newChildPhoto = new ChildPhoto({
+	    "image": imgurl,
+	    "parent": parentfileID
+            });
+	newChildPhoto.save(function (err, newChildPhoto) {
+	    if (!err) {
+		if(childfilelist.length==1){
+		    
+		    res.redirect('/photo')
+	        }
+		else{
+		    createChildPhoto(childfilelist.slice(1), parentfileID, res,);
+		}
+	    } else {
+		res.sendStatus(400);
+            }
+	});
+	});
+    });
+		    
+    stream.end(childfilelist[0].buffer);
+
+}
+
+var setLabel = async function (req, res) {
   try {
     const client = new vision.ImageAnnotatorClient();
     const [result] = await client.labelDetection(req.body.image);
@@ -131,15 +199,25 @@ var findAllPhotos = function(req, res) {
   });
 };
 
-var findOnePhoto = function(req, res) {
-  Photo.findById(req.params.id)
-    .populate('comments')
-    .exec(function(err, foundPhoto) {
-      if (!err) {
-        res.render('photos/show', { photo: foundPhoto, moment: moment });
-      } else {
-        res.sendStatus(404);
-      }
+var findOnePhoto = function(req, res){
+    var getImage = function(item){
+	    return item.image;
+    }
+    Photo.findById(req.params.id).populate('comments').exec(function(err, foundPhoto){
+        if(!err){
+	    ChildPhoto.find({'parent': req.params.id}).exec(function(err, foundSet){
+		if(!err){
+			
+		    console.log(foundSet);
+		    console.log(foundSet.map(getImage));
+            	    res.render('photos/show', {photo: foundPhoto, moment: moment, children: foundSet.map(getImage)})
+		}else{
+		    res.sendStatus(404);
+		}
+	    });
+        }else{
+            res.sendStatus(404);
+        }
     });
 };
 

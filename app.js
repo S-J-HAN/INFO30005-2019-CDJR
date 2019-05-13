@@ -7,6 +7,7 @@ var methodOverride = require('method-override');
 var flash = require('connect-flash');
 var User = require('./models/user');
 var Photo = require('./models/photo');
+var ChildPhoto = require('./models/childphoto');
 var Comment = require('./models/comment');
 var Moment = require('moment');
 var firebase = require('firebase');
