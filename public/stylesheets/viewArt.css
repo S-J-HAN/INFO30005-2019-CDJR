@@ -1,0 +1,232 @@
+/* .photoImage {
+  width: 100%;
+  top: 0px;
+  vertical-align: top;
+
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.photoBackground {
+  background-color: white;
+  height: auto;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+
+  animation-name: loadPhoto;
+  animation-duration: 0.7s;
+
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.photoDescription {
+  overflow-wrap: break-word;
+  font-size: 16px;
+  hyphens: auto;
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+/* }
+
+.title {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.title.main {
+  margin-top: 15px;
+  font-family: Futura;
+  font-size: 30px;
+
+  color: #112d4e;
+}
+
+.title.sub {
+  font-size: 15px;
+  color: #112d4e;
+}
+
+.title.subdued {
+  font-size: 30px;
+  color: #dbe2ef;
+  margin-left: 0px;
+}  */
+
+.title.main {
+  font-family: Futura;
+  font-size: 30px;
+  color: #112d4e;
+  display: inline;
+}
+
+.title.sub {
+  font-size: 15px;
+  color: #112d4e;
+}
+
+.title.subdued {
+  font-size: 30px;
+  color: #dbe2ef;
+}
+
+.photoDescription {
+  overflow-wrap: break-word;
+  font-size: 16px;
+  hyphens: auto;
+}
+
+.button-link {
+  background: transparent;
+  border: none !important;
+  color: #dbe2ef;
+}
+
+.button-link:hover {
+  color: #3f72af;
+}
+
+.photo-form {
+  font-size: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+}
+
+#back-button:hover {
+  background-color: #112d4e;
+}
+
+.container.show-photo {
+  display: block;
+}
+
+#comment-username {
+  font-family: Futura;
+  font-size: 1rem;
+  color: black;
+  text-decoration: none;
+}
+
+#comment-username:hover {
+  color: #3f72af;
+}
+
+.comment-text {
+  font-family: Helvetica;
+  font-size: 14px;
+}
+
+.user-comment-header {
+  display: flex;
+}
+
+.user-alter-comment {
+  position: absolute;
+  right: 0;
+  display: flex;
+}
+
+.delete-comment {
+  font-size: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  background: transparent;
+  border: none !important;
+  color: #dbe2ef;
+}
+
+.edit-comment {
+  margin-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  text-decoration: none;
+  color: #dbe2ef;
+  background-color: none;
+  border-radius: 0px;
+  border-width: 0;
+}
+
+#delete-comment:hover {
+  color: #dbe2ef;
+}
+
+#edit-comment:hover {
+  color: #dbe2ef;
+}
+
+#post-comment {
+  display: block;
+  width: inherit;
+}
+
+#input-comment {
+  width: inherit;
+}
+
+.commentInput {
+  background: transparent;
+  background-color: none;
+  border: none;
+}
+
+.comment-date {
+  font-family: Helvetica;
+  font-size: 11px;
+  font-style: italic;
+
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.description-date {
+  font-family: Helvetica;
+  font-size: 13px;
+  font-style: italic;
+  padding: 0;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}

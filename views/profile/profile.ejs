@@ -1,0 +1,151 @@
+<% include ../partials/header %>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+        <h1 class="username"><%= currentUser.username %></h1>
+        <h2 class="profileHeader">About</h2>
+        <p class="profileText">I'm passionate about music, art and design. I loved to draw as a child, but I've only recently picked it up as a hobby again as an adult. My favourite mediums are acrylic, watercolour and good old graphite pencil. I like to draw anything that I find interesting, from people to buildings and even cows. Welcome to my art journey!</p>
+        <h2 class="profileHeader">Age</h2>
+        <p class="profileText"><%= currentUser.age %></p>
+        <h2 class="profileHeader">Sign up date</h2>
+        <p class="profileText"><%= moment(currentUser.date).format('LL') %></p>
+        <h2 class="profileHeader">Location</h2>
+        <p class="profileText"><%= currentUser.city %></p>
+        <a class="sortby button" href="/photo/new">create</a><br>
+        <a class="sortby button" href="/profile/<%= currentUser.username %>/like">my likes</a>
+
+    </div>
+
+    <div class="col-8">
+      <div class="animated animatedFadeInUp fadeInUp">
+        <% var photosByYear = new Object;
+          photos.forEach(function(photo) {
+            if (photosByYear[moment(photo.postAt).format("YYYY")]) {
+              photosByYear[moment(photo.postAt).format("YYYY")].push(photo);
+            } else {
+              photosByYear[moment(photo.postAt).format("YYYY")] = [photo];
+            }
+          })
+
+          var journey = new Object;
+          var journeyLikes = new Object;
+          photos.forEach(function(photo) {
+            var year = moment(photo.postAt).format("YYYY")
+            var likes = photo.likes
+            if (journeyLikes[year]) {
+              if (likes > journeyLikes[year]) {
+                journey[year] = [photo]
+                journeyLikes[year] = likes
+              }
+            } else {
+              journey[year] = [photo]
+              journeyLikes[year] = likes
+            }
+          })
+
+          var highlights = new Object;
+          photos.forEach(function(photo) {
+            var likes = photo.likes
+            if (highlights[likes]) {
+              highlights[likes].push(photo)
+            } else {
+              highlights[likes] = [photo]
+            }
+          })
+
+        %>
+
+        <div class="sortby">
+          <!-- <h3 class="sortby header">sort by</h2> -->
+          <div class="sortby buttons" id="sortby buttons">
+            <button class="sortby button selected" id="journey" onclick="switchSort(this)">journey</button>
+            <button class="sortby button" id="highlights" onclick="switchSort(this)">highlights</button>
+            <button class="sortby button" id="latest" onclick="switchSort(this)">latest</button>
+            <button class="sortby button" id="earliest" onclick="switchSort(this)">earliest</button>
+            <script>
+              function switchSort(element) {
+                var parent = document.getElementById("sortby buttons")
+                for (var i=0; i<parent.children.length; i++) {
+                  button = parent.children[i]
+                  gallery = document.getElementById(button.id + " gallery")
+                  if (button != element) {
+                    button.classList.remove("selected")
+                    if (gallery) {
+                      gallery.style.display = "none"
+                    }
+                  } else {
+                    button.classList.add("selected")
+                    if (gallery) {
+                      gallery.style.display = "block"
+                    }
+                  }
+                }
+              }
+            </script>
+          </div>
+        </div>
+
+        <div id="journey gallery" style="display:block;">
+          <% Object.keys(journey).reverse().forEach(function(key) { %>
+            <% art = journey[key] %>
+            <% art.forEach(function(photo) { %>
+              <a href="/photo/<%= photo._id %>" class="gallery image">
+                <img class="image" src="<%= photo.image %>">
+                <div class="likeButton gallery"><i class="far fa-heart mr-1"></i><%= photo.likes %></div>
+                <div class="date"><%= key %></div>
+              </a>
+            <% }) %>
+          <% }) %>
+        </div>
+        <div id="highlights gallery" style="display:none;">
+          <% Object.keys(highlights).reverse().forEach(function(key) { %>
+            <% art = highlights[key] %>
+            <% art.forEach(function(photo) { %>
+              <a href="/photo/<%= photo._id %>" class="gallery image">
+                <img class="image" src="<%= photo.image %>">
+                <div class="likeButton gallery"><i class="far fa-heart mr-1"></i><%= photo.likes %></div>
+                <div class="date"><%= moment(photo.postAt).format("MMM YYYY") %></div>
+              </a>
+            <% }) %>
+          <% }) %>
+        </div>
+        <div id="latest gallery" style="display:none;">
+          <% Object.keys(photosByYear).reverse().forEach(function(key) { %>
+            <% art = photosByYear[key] %>
+            <% art.forEach(function(photo) { %>
+              <a href="/photo/<%= photo._id %>" class="gallery image">
+                <img class="image" src="<%= photo.image %>">
+                <div class="likeButton gallery"><i class="far fa-heart mr-1"></i><%= photo.likes %></div>
+                <div class="date"><%= moment(photo.postAt).format("MMM YYYY") %></div>
+              </a>
+            <% }) %>
+          <% }) %>
+        </div>
+        <div id="earliest gallery" style="display:none;">
+          <% Object.keys(photosByYear).forEach(function(key) { %>
+            <% art = photosByYear[key] %>
+            <% art.forEach(function(photo) { %>
+              <a href="/photo/<%= photo._id %>" class="gallery image">
+                <img class="image" src="<%= photo.image %>">
+                <div class="likeButton gallery"><i class="far fa-heart mr-1"></i><%= photo.likes %></div>
+                <div class="date"><%= moment(photo.postAt).format("MMM YYYY") %></div>
+              </a>
+            <% }) %>
+          <% }) %>
+        </div>
+
+        <script>
+            function presentArt(photo){}
+
+        </script>
+
+        <% if (photos.length == 0) { %>
+          <h3 class="noArt">No art yet...</h3>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+<% include ../partials/footerScript %>
+<% include ../partials/footer %>

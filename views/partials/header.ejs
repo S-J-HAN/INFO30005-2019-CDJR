@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Drawer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/favicon/site.webmanifest">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/profile.css">
+        <link rel="stylesheet" href="/stylesheets/gallery.css">
+        <link rel="stylesheet" href="/stylesheets/viewArt.css">
+        <link rel="stylesheet" href="/stylesheets/footer.css">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" id="logo" href="/photo">drawer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ml-auto">
+                    <li><a class="navlink" href="/photo/new"><i class="fas fa-upload mr-1"></i>Create</a></li>
+                    <li><a class="navlink" href="/photo"><i class="far fa-compass mr-1"></i>Explore</a></li>
+                    <% if(!currentUser){ %>
+                        <li class="nav-item">
+                            <a class="navlink" href="/login"><i class="fas fa-user mr-1"></i>Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navlink" href="/register"><i class="fas fa-user-plus mr-1"></i>Sign up</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="navlink" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="navlink" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+          <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+              <%= error %>
+              <button type="button" class="close">
+                <span>&times;</span>
+              </button>
+            </div>
+          <% } %>
+          <% if(success && success.length > 0){ %>
+            <div id="successAlert" class="alert alert-success" role="alert">
+              <%= success %>
+              <button id="successClose" type="button" class="close">
+                <span>&times;</span>
+              </button>
+            </div>
+          <% } %>
+        </div>

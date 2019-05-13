@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+<main>
+    <h1>Update '<%= photo.name %>'</h1>
+    <form action="/photo/<%= photo._id %>?_method=PUT" method="POST" >
+        <input type="text" name="photo[name]" value="<%= photo.name %>">
+        <input type="text" name="photo[description]" value="<%= photo.description %>">
+        <input type="text" name="photo[image]" value="<%= photo.image %>">
+        <button type="">Update!</button>
+    </form>
+    <a href="/photo">Back</a>
+</main>
+<% include ../partials/footerScript %>
+<% include ../partials/footer %>

@@ -1,0 +1,272 @@
+body {
+  background: #f9f7f7;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+#loginForm .loginBox {
+  border: 2px solid #3f72af;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+#loginForm .loginBox .submitButton {
+  margin-top: 2rem;
+  background-color: transparent;
+  text-align: center;
+}
+#loginForm .loginBox .submitButton button {
+  background-color: #3f72af;
+  border: #3f72af;
+  transition: box-shadow 0.3s;
+}
+#loginForm .loginBox .submitButton button:hover {
+  box-shadow: 2px 2px #112d4e;
+}
+
+#registerForm .registerBox {
+  border: 2px solid #3f72af;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+#registerForm .registerBox .submitButton {
+  margin-top: 1.2rem;
+  background-color: transparent;
+  text-align: center;
+}
+#registerForm .registerBox .submitButton button {
+  background-color: #3f72af;
+  border: #3f72af;
+  transition: box-shadow 0.3s;
+}
+#registerForm .registerBox .submitButton button:hover {
+  box-shadow: 2px 2px #112d4e;
+}
+
+.inputBox {
+  background: none;
+  border: none;
+  border-width: 0;
+  outline: none;
+  shadow: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 90%;
+  padding-left: 10px;
+
+  font-family: Futura;
+  font-size: 30px;
+  color: #112d4e;
+}
+
+.inputBox:focus {
+  outline: none;
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.inputBox::placeholder {
+  color: #dbe2ef;
+}
+
+.btn-primary {
+  background-color: #3f72af;
+  border: #112d4e;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #112d4e;
+}
+
+/* photo/index.css */
+.card {
+  border: none;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.card .image {
+  opacity: 1;
+  display: block;
+  border-radius: 0;
+  width: 100%;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.card .image:hover {
+  opacity: 0.5;
+}
+
+.card-img-top {
+  border-radius: 0;
+}
+.card-text {
+  position: absolute;
+  right: 10px;
+
+  color: #112d4e;
+  font-size: 1.3rem;
+}
+
+.likeButton {
+  background: transparent;
+  border: none !important;
+}
+
+.likeButton.gallery {
+  position: absolute;
+  bottom: -45px;
+  left: -30px;
+  color: #112d4e;
+  /* This is weird but idk how else to make it work */
+}
+
+.likeform {
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.tagList {
+
+}
+
+#page-container {
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;
+}
+
+.navbar-brand {
+  color: #112d4e;
+}
+
+.navlink {
+  color: #112d4e;
+  padding: 10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.search {
+  display: block;
+  color: #dbe2ef;
+
+  position: relative;
+  left: -15px;
+}
+
+.sticky-top.scrolled {
+  background-color: #f9f7f7 !important;
+  transition: background-color 200ms linear;
+}
+
+.sortOption {
+  margin-bottom: 10px;
+  position: relative;
+  left: -7px;
+}
+
+.sortOption.header {
+  color: #dbe2ef;
+  font-family: Futura;
+  font-size: 16px;
+}
+
+.sortOption.button {
+  color: #dbe2ef;
+  font-family: Futura;
+  font-size: 18px;
+
+  border: 0px;
+  background: none;
+
+  padding-left: 0px;
+}
+
+.sortOption.tag {
+  font-size: 15px;
+}
+
+.sortOption.button.selected {
+  color: #112d4e;
+}
+
+.sortOption.button:hover {
+  color: #3f72af;
+}
+
+.sortOption.button.selected:hover {
+  color: #112d4e;
+}
+
+.sortOption.button:focus {
+  outline: 0;
+}
+
+.navlink:hover,
+#logo:hover {
+  color: #3f72af;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+#logo {
+  color: #112d4e;
+  width: auto;
+  font-size: 30px;
+  font-family: Georgia;
+  font-style: oblique;
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+#footer {
+  background-color: blue;
+  width: 100%;
+  height: 80px;
+  position: absolute;
+}
+
+/* card-column responsive */
+@media (min-width: 34em) {
+  .card-columns {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 1;
+  }
+}
+
+@media (min-width: 48em) {
+  .card-columns {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 75em) {
+  .card-columns {
+    -webkit-column-count: 5;
+    -moz-column-count: 5;
+    column-count: 3;
+  }
+}
+
+/* Create new image css */
+#imagePreview img {
+  width: 100%;
+}

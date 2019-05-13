@@ -1,0 +1,164 @@
+.gallery {
+  width: 70%;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  padding: 10px;
+  display: inline-block;
+
+  float: left;
+
+  animation-name: loadGallery;
+  animation-duration: 1s;
+}
+
+/* .likeGallery {
+  width: 100vw;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 40px;
+  padding: 10px;
+  display: inline-block;
+
+  float: left;
+
+  animation-name: loadGallery;
+  animation-duration: 1s;
+} */
+
+.imageRow {
+  padding-bottom: 10px;
+  width: 850px;
+}
+
+.gallery.image {
+  vertical-align: middle;
+  position: relative;
+
+  object-fit: cover;
+
+  width: 230px;
+  height: 340px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+
+  margin: auto;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  padding: 0px;
+
+  border-radius: 5px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.gallery.image:focus {
+  outline: none;
+  border-radius: none;
+}
+
+.image {
+  object-fit: cover;
+
+  width: 100%;
+  height: 306px;
+  margin-bottom: 34px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.date {
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
+
+  font-family: Futura;
+  color: #112d4e;
+}
+
+.noArt {
+  float: left;
+
+  width: 200px;
+  height: 300px;
+
+  padding-top: 100px;
+
+  font-family: Futura;
+
+  text-align: center;
+  vertical-align: middle;
+
+  background-color: #dbe2ef;
+
+  margin: auto;
+  margin-bottom: 15px;
+  margin-right: 10px;
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.image:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.sortby {
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+.sortby.header {
+  color: #dbe2ef;
+  font-family: Futura;
+  font-size: 20px;
+}
+
+.sortby.button {
+  color: #dbe2ef;
+  font-family: Futura;
+  font-size: 22px;
+
+  border: 0px;
+  background: none;
+
+  padding-left: 0px;
+}
+
+.sortby.button.selected {
+  color: #112d4e;
+}
+
+.sortby.button:hover {
+  color: #3f72af;
+  text-decoration: none;
+}
+
+.sortby.button.selected:hover {
+  color: #112d4e;
+}
+
+.sortby.button:focus {
+  outline: 0;
+}
+
+@keyframes loadGallery {
+  from {
+    margin-top: 100px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0px;
+    opacity: 1;
+  }
+}

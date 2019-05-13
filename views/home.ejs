@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drawer</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
+
+    <div id="landing-header">
+      <!-- <h2 class="display-4 welcome-text">welcome to</h2> -->
+   		<h1 class="diplay-4 logo">drawer</h1>
+      <!-- <h3 class="mt-3 by-text">by CDJR Technologies</h3> -->
+      <h3 class="mt-3 by-text">A place for <b>inspiration</b>, <b>exploration</b> and <b>self-improvement</b>.</h3>
+      <h3 class="mt-3 by-text">Open to all artists, from beginners to experts.</h3>
+      <h3 class="mt-3 by-text">Your creative journey starts here.</h3>
+  		<a href="/photo" class="btn btn-lg btn-info rounded-pill mt-4">Explore!</a>
+    </div>
+
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    </body>
+</html>
+

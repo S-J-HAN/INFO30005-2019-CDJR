@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+<main>
+    <div class="container">
+        <h1>Edit comment!</h1>
+        <form action="/photo/<%= photo_id %>/comment/<%= comment._id %>?_method=PUT" method="POST">
+            <input type="text" name="comment[text]" value="<%= comment.text %>">
+            <button type="">Submit!</button>
+        </form>
+        <a href="/photo/<%= photo_id %>">Go back</a>
+    </div>
+</main>
+<% include ../partials/footerScript %>
+<% include ../partials/footer %>

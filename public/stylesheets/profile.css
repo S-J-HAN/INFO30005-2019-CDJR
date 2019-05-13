@@ -1,0 +1,96 @@
+.profileText {
+  /* font-family: Helvetica; */
+  font-size: 15px;
+  padding-right: 20px;
+  color: #112d4e;
+}
+
+.profileHeader {
+  font-family: Futura;
+  font-size: 20px;
+  font-weight: 500;
+  color: #112d4e;
+}
+
+.username {
+  padding-top: 20px;
+
+  font-family: Futura;
+  font-size: 30px;
+  font-weight: normal;
+
+  color: #112d4e;
+}
+
+.profilePage {
+  margin-top: 15px;
+  width: 100%;
+  height: auto;
+
+  display: flex;
+}
+
+.gallery a {
+  text-decoration: none;
+  color: #112d4e;
+}
+.gallery a:hover {
+  text-decoration: underline;
+  color: #112d4e;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+  opacity: 0;
+}
+
+.fadeInUp {
+  opacity: 0;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+}
+
+.profileButton {
+  background-color: #dbe2ef;
+  color: #112d4e;
+
+  outline-width: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 20px;
+
+  font-family: Helvetica;
+  font-size: 20px;
+
+  border-radius: 5px;
+}

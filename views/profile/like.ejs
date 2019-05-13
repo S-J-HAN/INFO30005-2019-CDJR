@@ -1,0 +1,18 @@
+<% include ../partials/header %>
+    <main>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h1 class="text-center profile-header my-4"><%= currentUser.username %>'s liked works</h1>
+                    <% photos.forEach(function(photo){ %>
+                        <a href="/photo/<%= photo._id %>" class="gallery image">
+                          <img class="image" src="<%= photo.image %>">
+                        </a>
+                    <% }) %>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<% include ../partials/footerScript %>
+<% include ../partials/footer %>

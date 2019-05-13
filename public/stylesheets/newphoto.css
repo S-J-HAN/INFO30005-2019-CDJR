@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.PageInfo {
+  font-family: Futura;
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.ImageInfo {
+  width: 100vw;
+  float: left;
+  font-family: Helvetica;
+  color: black;
+}
+
+.Left {
+  width:50%;
+  font-family: Futura;
+  font-weight: normal;
+
+  color: black;
+}
+
+.Right {
+  width:50%;
+  font-family: Futura;
+  font-weight: normal;
+  color: black;
+}
+
+.UploadImage {
+  color: black;
+  float: left;
+}
+
+.Left2 {
+  width:47%;
+  font-family: Futura;
+  font-size: 20px;
+  font-weight: normal;
+  padding-left: 3vw;
+  color: black;
+}
+
+.Right2 {
+  width:47%;
+  font-family: Futura;
+  font-size: 20px;
+  font-weight: normal;
+  color: black;
+}
+
+.ImageUpload {
+  float: left;
+  font-size: 22px;
+  padding-top: 12px;
+  top: 0;
+}
+
+.ImageDetails {
+  float: left;
+  padding-left: 2vw;
+  font-size: 16px;
+}
+
+.DetailField {
+  font-size: 16px;
+}
+
+img {
+  width: 45vw;
+  padding-left: 3vw;
+}

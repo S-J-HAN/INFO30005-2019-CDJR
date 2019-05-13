@@ -1,0 +1,39 @@
+<% include ./partials/header %>
+<section id="registerForm">
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-center">
+            <div class="col-8 col-sm-6 col-lg-5">
+                <div class="registerBox p-5">
+                    <form action="/register" method="POST">
+                        <h1 class="text-center">Sign up</h1>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="happyBird">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control" name="age" id="age" placeholder="13">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">City/Country</label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="Melbourne">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="submitButton">
+                            <button type="submit" class="btn btn-info px-5 rounded-pill submitButton">Sign up</button>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+</section>
+<% include ./partials/footer %>
