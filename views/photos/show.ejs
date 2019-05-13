@@ -3,8 +3,7 @@
   <div class="row">
     <div class="col-6 col-lg-7">
       <div class="card photoBackground animated animatedFadeInUp fadeInUp" style="border-radius:10px;">
-        <img class="photoImage card-img-top" id="photoImage" style="border-top-left-radius:10px; border-top-right-radius:10px">
-
+        <img class="photoImage card-img-top" id="photoImage" src="<%= photo.image %>" style="border-top-left-radius:10px; border-top-right-radius:10px">
           <div class="card-body" style="min-height: 35vh">
             <div class="card-title title main">
               <%= photo.name %>
@@ -85,7 +84,6 @@
         <% if (currentUser) { %>
           <script>
             autosize(document.getElementById('comment'))
-             
           </script>
           <a href="/profile/<%= currentUser.username %>" id="comment-username"><%= currentUser.username %></a>
           <div class="comment-date"><%= moment(new Date()).format('LL') %></div>

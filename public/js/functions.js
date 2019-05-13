@@ -33,6 +33,17 @@ $('#imageUpload').change(function() {
 
 function switchSort(element) {
   var parent = document.getElementById('sortby buttons');
+
+  var searchGallery = document.getElementById('search gallery');
+  if (searchGallery) {
+    searchGallery.style.display = 'none';
+  }
+
+  var searchBar = document.getElementById('search-bar');
+  if (searchBar) {
+    searchBar.value = '';
+  }
+
   for (var i = 0; i < parent.children.length; i++) {
     button = parent.children[i];
     gallery = document.getElementById(button.id + ' gallery');
@@ -56,4 +67,68 @@ function toggleTag(element) {
   } else {
     element.classList.add('selected');
   }
+}
+
+function toggleSearch() {
+  var searchGallery = document.getElementById('search gallery');
+  searchGallery.style.display = 'block';
+
+  var anim = document.getElementById('search-gallery-parent');
+  anim.parentNode.replaceChild(anim.cloneNode(true), anim);
+
+  var parent = document.getElementById('sortby buttons');
+  for (var i = 0; i < parent.children.length; i++) {
+    button = parent.children[i];
+    gallery = document.getElementById(button.id + ' gallery');
+    button.classList.remove('selected');
+    if (gallery) {
+      gallery.style.display = 'none';
+    }
+  }
+}
+
+if (document.getElementById('search-bar')) {
+  document.getElementById('search-bar').onkeydown = function(event) {
+    if (event.keyCode == 13) {
+      if (document.getElementById('search-bar').value.length > 0) {
+        var searchItems = document
+          .getElementById('search-bar')
+          .value.split(' ');
+        toggleSearch();
+        var art = document.getElementById('search-gallery-parent').children;
+        for (var i = 0; i < art.length; i++) {
+          var contain = false;
+          var card = art[i];
+          for (var j = 0; j < searchItems.length; j++) {
+            var s = searchItems[j].toLowerCase();
+            if (
+              card
+                .getAttribute('labels')
+                .toLowerCase()
+                .split(' ')
+                .includes(s) ||
+              card
+                .getAttribute('user')
+                .toLowerCase()
+                .includes(s) ||
+              card
+                .getAttribute('title')
+                .toLowerCase()
+                .split(' ')
+                .includes(s)
+            ) {
+              contain = true;
+            }
+          }
+          if (contain) {
+            card.style = '';
+          } else {
+            card.style = 'display:none';
+          }
+        }
+      } else {
+        switchSort(document.getElementById('popular'));
+      }
+    }
+  };
 }

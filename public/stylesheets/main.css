@@ -52,10 +52,12 @@ body {
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
-  width: 100%;
-  font-family: Futura;
+  width: 90%;
+  padding-left: 10px;
 
-  margin-bottom: 20px;
+  font-family: Futura;
+  font-size: 30px;
+  color: #112d4e;
 }
 
 .inputBox:focus {
@@ -86,7 +88,7 @@ body {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-  overflow: hidden;
+
 
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -159,25 +161,35 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.search {
+  display: block;
+  color: #dbe2ef;
+
+  position: relative;
+  left: -15px;
+}
+
 .sticky-top.scrolled {
   background-color: #f9f7f7 !important;
   transition: background-color 200ms linear;
 }
 
 .sortOption {
-
+  margin-bottom: 10px;
+  position: relative;
+  left: -7px;
 }
 
 .sortOption.header {
   color: #dbe2ef;
   font-family: Futura;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .sortOption.button {
   color: #dbe2ef;
   font-family: Futura;
-  font-size: 22px;
+  font-size: 18px;
 
   border: 0px;
   background: none;
