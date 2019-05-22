@@ -55,6 +55,37 @@
   margin-left: 0px;
 }  */
 
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rounded-10 {
+  border-radius: 10px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.photo-index {
+  background-color: #dbe2ef;
+  margin-left: 5px;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+
+  display: inline-block;
+}
+
+.photo-index:hover {
+  background-color: #3f72af;
+}
+
+.photo-index-selected {
+  background-color: #3f72af;
+}
+
 .title.main {
   font-family: Futura;
   font-size: 30px;

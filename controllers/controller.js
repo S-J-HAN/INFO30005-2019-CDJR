@@ -47,78 +47,75 @@ var createPhoto = function (req, res) {
 	    resumable: false
     });
     stream.on('error', (err) => {
+      console.log("hi")
         req.files[0].cloudStorageError = err;
     });
 
     stream.on('finish', () => {
-	return file.makePublic()
+	     return file.makePublic()
         .then(() => {
-    
-      const client = new vision.ImageAnnotatorClient();
-      client
-        .labelDetection(req.body.image)
-        .then(results => {
-          const labels = results[0].labelAnnotations;
-          var labelsFinal = [];
+          // const client = new vision.ImageAnnotatorClient();
+          // const [result] = await client.labelDetection(`gs://${bucket.name}/${gcsame}`);
+          // const labels = result.labelAnnotations;
+          // var labelsFinal = []
+          // for (var i=0; i<labels.length; i++) {
+          //   if (labels[i].description.includes("paint")) {
+          //     if (labels[i].accuracy > 0.8) {
+          //       labelsFinal.push(labels[i].description)
+          //     }
+          //   } else {
+          //     labelsFinal.push(labels[i].description)
+          //   }
+          // }
 
-          for (var i = 0; i < labels.length; i++) {
-            if (labels[i].description.includes('paint')) {
-              if (labels[i].accuracy > 0.8) {
-                labelsFinal.push(labels[i].description.toLowerCase());
-              }
-            } else {
-              labelsFinal.push(labels[i].description.toLowerCase());
+    	    var imgurl = 'https://storage.googleapis.com/'+bucket.name+'/'+gcsname;
+
+    	    var newPhoto = new Photo({
+      	    "name": req.body.name,
+      	    "description": req.body.description,
+      	    "image": imgurl,
+      	    "postAt": req.body.date,
+      	    "author": {
+          		id: req.user._id,
+          		username: req.user.username
             }
-          }
-    
-        var imgurl = 'https://storage.googleapis.com/'+bucket.name+'/'+gcsname;
-        var newPhoto = new Photo({
-          name: req.body.name,
-          description: req.body.description,
-          image: imgurl,
-          date: req.body.date,
-          author: {
-                    id: req.user._id,
-                    username: req.user.username
-                      },
-          labels: labelsFinal
-        });
-        newPhoto.save(function (err, newPhoto) {
-            if (!err) {
-              if(req.files.length==1){
-                  res.redirect('/photo')
+            // "labels": labelsFinal
+    	    });
+        	newPhoto.save(function (err, newPhoto) {
+        	    if (!err) {
+            		if (req.files.length==1) {
+          		    res.redirect('/photo')
+            		} else {
+          		    createChildPhoto(req.files.slice(1), newPhoto._id, res);
+            		}
+        	    } else {
+                console.log(err)
+      		      res.sendStatus(400);
               }
-              else{
-                  createChildPhoto(req.files.slice(1), newPhoto._id, res);	    
-              }
-            } else {
-              res.sendStatus(400);
-            }
-	      });
-	    });  
+        	})
+	     })
+       .catch(err => {
+           console.error('ERROR:', err);
+           var newPhoto = new Photo({
+               name: req.body.name,
+               description: req.body.description,
+               image: req.body.image,
+               author: {
+                   id: req.user._id,
+                   username: req.user.username
+               }
+             });
+             newPhoto.save(function(err, newPhoto) {
+               if (!err) {
+                 res.redirect('/photo');
+               } else {
+                 res.sendStatus(400);
+               }
+             });
+       });
     });
     stream.end(req.files[0].buffer);
-	
-  .catch(err => {
-    console.error('ERROR:', err);
-    var newPhoto = new Photo({
-        name: req.body.name,
-        description: req.body.description,
-        image: req.body.image,
-        author: {
-            id: req.user._id,
-            username: req.user.username
-        }
-      });
-      newPhoto.save(function(err, newPhoto) {
-        if (!err) {
-          res.redirect('/photo');
-        } else {
-          res.sendStatus(400);
-        }
-      });
-    });
-};
+}
 
 var createChildPhoto = function(childfilelist, parentfileID, res) {
     var bucket = gcs.bucket('gs://zeta-verbena-238512.appspot.com');
@@ -145,7 +142,7 @@ var createChildPhoto = function(childfilelist, parentfileID, res) {
 	newChildPhoto.save(function (err, newChildPhoto) {
 	    if (!err) {
 		if(childfilelist.length==1){
-		    
+
 		    res.redirect('/photo')
 	        }
 		else{
@@ -157,7 +154,7 @@ var createChildPhoto = function(childfilelist, parentfileID, res) {
 	});
 	});
     });
-		    
+
     stream.end(childfilelist[0].buffer);
 
 }
@@ -207,7 +204,7 @@ var findOnePhoto = function(req, res){
         if(!err){
 	    ChildPhoto.find({'parent': req.params.id}).exec(function(err, foundSet){
 		if(!err){
-			
+
 		    console.log(foundSet);
 		    console.log(foundSet.map(getImage));
             	    res.render('photos/show', {photo: foundPhoto, moment: moment, children: foundSet.map(getImage)})
