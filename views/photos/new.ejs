@@ -4,22 +4,22 @@
         <link rel="stylesheet" href="/stylesheets/newphoto.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
-    <div class="container">
-        <h1 class="text-center mb-3">Upload new image</h1>
+    <div class="box shadow">
         <form action="/photo" enctype="multipart/form-data" method="POST" >
             <div class="row">
                 <div class="col-6 mr-5">
                     <div class="w3-content w3-display-container" id="Photos">
+                        <h1 class="mb-3 subdued-header">Upload a new image!</h1>
                         <img id="output"></img>
                     </div>
                     <div class="input-group mt-3">
                         <label class="custom-file-label" for="imageUpload" id="filelist"></label>
                         <input class="custom-file-input" id="imageUpload" type="file" name="imagefile" accept="image/png, image/jpeg" onchange="loadFile(event)" multiple>
-                           
+
                         <script>
                             var output = document.getElementById('output');
                             output.src = "http://icons.iconarchive.com/icons/ccard3dev/dynamic-yosemite/1024/Preview-icon.png"
-                            var loadFile = function(event) {                                
+                            var loadFile = function(event) {
                                 //output.src = URL.createObjectURL(event.target.files[0]);
                                 var newphotos=[];
                                 for(i=0;i<event.target.files.length;i++){
@@ -35,7 +35,7 @@
                             };
                             var createGallery = function(photos) {
                                 var newHTML="";
-             
+
                                 for(i=0;i<photos.length;i++){
                                     newHTML+="<img class='mySlides' src="+photos[i]+">";
                                 }
@@ -48,7 +48,7 @@
                                 showDivs(slideIndex);
                             }
                             var slideIndex = 1;
-                            
+
                             function plusDivs(n) {
                                 showDivs(slideIndex += n);
                             }
@@ -62,32 +62,32 @@
                               if (n > x.length) {slideIndex = 1}
                               if (n < 1) {slideIndex = x.length}
                               for (i = 0; i < x.length; i++) {
-                                x[i].style.display = "none";  
+                                x[i].style.display = "none";
                               }
                               for (i = 0; i < dots.length; i++) {
                                 dots[i].className = dots[i].className.replace(" w3-blue", "");
                               }
-                              x[slideIndex-1].style.display = "block";  
+                              x[slideIndex-1].style.display = "block";
                               dots[slideIndex-1].className += " w3-blue";
                             }
                         </script>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="imageURL">Upload by URL</label>
+                        <label class="subdued-subheader" for="imageURL">Upload by URL</label>
                         <input class="form-control" id="imageURL" type="text" name="image" placeholder="Enter Image URL">
                     </div>
                 </div>
-                <div class="col-5 pl-4">
+                <div class="col-5 pl-4" style="margin-top:50px;">
                     <div class="form-group">
-                        <label for="newTitle">Title</label>
+                        <label class="subdued-subheader" for="newTitle">Title</label>
                         <input class="form-control" id="newTitle" type="text" name="name" placeholder="Image title" size="50">
                     </div>
                     <div class="form-group">
-                        <label for="newDate">Date</label>
+                        <label class="subdued-subheader" for="newDate">Date</label>
                         <input class="form-control" id="newDate" type="date" name="date">
                     </div>
                     <div class="form-group">
-                        <label for="newDescription">Description</label>
+                        <label class="subdued-subheader" for="newDescription">Description</label>
                         <textarea class="form-control" id="newDescription" name="description" placeholder="Image description" rows="10" cols="50"></textarea>
                     </div>
                     <button class="btn btn-primary" type="">Submit</button>
