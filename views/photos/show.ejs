@@ -19,22 +19,23 @@
             photos=photos.concat(childrenlist);
           }
 
-
+          var previewHTML="<div class='preview'>";
           var newHTML="";
           for(i=0;i<photos.length;i++){
               newHTML+="<img class='mySlides card-img-top' src="+photos[i]+" style='border-top-left-radius:10px; border-top-right-radius:10px'>";
+              previewHTML+="<div><img src="+photos[i]+"></div>"
           }
           if (photos.length > 1) {
             newHTML+='<div class="w3-center w3-container w3-section w3-large w3-text-black" style="width:100%">';
-          }
-          if (photos.length > 1) {
             newHTML+='<div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div><div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>'
             for(i=0;i<photos.length;i++){
                 newHTML+='<span class="demo photo-index" onclick="currentDiv('+(i+1)+')"></span>';
             }
           }
           newHTML+='</div>';
-          document.getElementById("photoImage").innerHTML=newHTML;
+          previewHTML+='</div>'
+          document.getElementById("photoImage").innerHTML+=newHTML;
+          // document.getElementById("photoImage").innerHTML += previewHTML
 
           var slideIndex = 1;
           showDivs(slideIndex);
@@ -68,6 +69,17 @@
           }
         </script>
 
+        <!-- <script type="javascript">
+          $(document).ready(function(){
+            $('.preview').slick({
+              dots: true,
+              infinite: true,
+              slidesToShow: 1,
+              slidesToScroll: 3
+            });
+          });
+        </script> -->
+
         <div class="card-body" style="min-height: 35vh">
           <div class="card-title title main">
             <%= photo.name %>
@@ -87,7 +99,7 @@
           <div class="photoDescription"><%= photo.description %></div>
           <!-- <div class="title sub"><%= photo.labels %></div> -->
           <div>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out this photo on #drawer" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>      
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Check out this photo on #drawer" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
         </div>
 
