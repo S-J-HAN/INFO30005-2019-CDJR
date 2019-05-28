@@ -118,6 +118,10 @@
     width: 345px;
     height: 510px;
   }
+
+  .profileText {
+    width: 70vw;
+  }
 }
 
 @media (min-width: 1000px) {
@@ -141,5 +145,9 @@
   .gallery.image {
     width: 230px;
     height: 340px;
+  }
+
+  .profileText {
+    width: auto;
   }
 }

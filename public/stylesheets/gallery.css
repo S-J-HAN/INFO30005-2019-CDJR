@@ -165,7 +165,7 @@
 
 @media (max-width: 1000px) {
   .gallery.image {
-    width: 345px;
+    width: 70vw;
     height: 510px;
   }
 
