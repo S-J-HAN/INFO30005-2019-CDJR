@@ -208,7 +208,7 @@
 }
 
 .slick-slide {
-  width: auto;
+  width: 700px;
   height: auto;
   box-sizing: border-box;
 
@@ -218,5 +218,17 @@
 }
 
 .slick-track {
-  width: auto;
+  width: 100px;
+}
+
+.slick-initialized {
+  display: block;
+}
+
+.slick-list {
+  display: block;
+}
+
+.slick-track {
+  display: block;
 }

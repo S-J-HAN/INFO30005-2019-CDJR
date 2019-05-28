@@ -8,8 +8,10 @@ body {
 }
 
 #loginForm .loginBox {
-  border: 2px solid #3f72af;
+  /* border: 2px solid #3f72af; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
 }
 #loginForm .loginBox .submitButton {
   margin-top: 2rem;
@@ -25,9 +27,17 @@ body {
   box-shadow: 2px 2px #112d4e;
 }
 
+#loginForm .header {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  color: #3f72af;
+  margin-bottom: 15px;
+}
+
 #registerForm .registerBox {
-  border: 2px solid #3f72af;
+  /* border: 2px solid #3f72af; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
 }
 #registerForm .registerBox .submitButton {
   margin-top: 1.2rem;
@@ -41,6 +51,12 @@ body {
 }
 #registerForm .registerBox .submitButton button:hover {
   box-shadow: 2px 2px #112d4e;
+}
+
+#registerForm .header {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  color: #3f72af;
+  margin-bottom: 30px;
 }
 
 .inputBox {
