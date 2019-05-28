@@ -162,3 +162,25 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 1000px) {
+  .gallery.image {
+    width: 345px;
+    height: 510px;
+  }
+
+  .image {
+    height: 470px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .gallery.image {
+    width: 230px;
+    height: 340px;
+  }
+
+  .image {
+    height: 306px;
+  }
+}
