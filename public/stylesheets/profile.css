@@ -95,7 +95,7 @@
   border-radius: 5px;
 }
 
-@media (min-width: 0em) {
+@media (max-width: 1000px) {
   .responsive {
     display: inline-block;
   }
@@ -120,7 +120,7 @@
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 1000px) {
   .responsive {
     display: flex;
   }
