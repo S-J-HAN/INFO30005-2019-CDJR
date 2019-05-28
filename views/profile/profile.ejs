@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 <div class="container">
-  <div class="row">
-    <div class="col-4">
+  <div class="row responsive">
+    <div class="info">
 
         <h1 class="username"><%= currentUser.username %></h1>
         <h2 class="profileHeader">About</h2>
@@ -17,7 +17,7 @@
 
     </div>
 
-    <div class="col-8">
+    <div class="col-8 art-gallery">
       <div class="animated animatedFadeInUp fadeInUp">
         <% var photosByYear = new Object;
           photos.forEach(function(photo) {

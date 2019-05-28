@@ -94,3 +94,52 @@
 
   border-radius: 5px;
 }
+
+@media (min-width: 0em) {
+  .responsive {
+    display: inline-block;
+  }
+
+  .info {
+    width:90%;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .art-gallery {
+    width:75%;
+    padding-left: 20px;
+    margin-right: 50px;
+    margin-left: 50px;
+    padding-left: 0px;
+  }
+
+  .gallery.image {
+    width: 345px;
+    height: 510px;
+  }
+}
+
+@media (min-width: 50em) {
+  .responsive {
+    display: flex;
+  }
+
+  .info {
+    width:25%;
+    padding-left: 20px;
+    margin-right: 0px;
+  }
+
+  .art-gallery {
+    width:75%;
+    padding-left: 20px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .gallery.image {
+    width: 230px;
+    height: 340px;
+  }
+}
