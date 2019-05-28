@@ -30,7 +30,7 @@
 }
 
 .title.main {
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 30px;
   color: #112d4e;
   display: inline;
@@ -79,7 +79,7 @@
 }
 
 #comment-username {
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 1rem;
   color: black;
   text-decoration: none;
@@ -205,4 +205,18 @@
   opacity: 0;
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
+}
+
+.slick-slide {
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+
+  img {
+    width: 100%;
+  }
+}
+
+.slick-track {
+  width: auto;
 }

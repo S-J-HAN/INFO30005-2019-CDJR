@@ -19,11 +19,11 @@
             photos=photos.concat(childrenlist);
           }
 
-          var previewHTML="<div class='preview'>";
+          var previewHTML="<div class='preview' id='slick-preview'>";
           var newHTML="";
           for(i=0;i<photos.length;i++){
               newHTML+="<img class='mySlides card-img-top' src="+photos[i]+" style='border-top-left-radius:10px; border-top-right-radius:10px'>";
-              previewHTML+="<div><img src="+photos[i]+"></div>"
+              previewHTML+="<div><img src="+photos[i]+"></img></div>"
           }
           if (photos.length > 1) {
             newHTML+='<div class="w3-center w3-container w3-section w3-large w3-text-black" style="width:100%">';
@@ -35,7 +35,7 @@
           newHTML+='</div>';
           previewHTML+='</div>'
           document.getElementById("photoImage").innerHTML+=newHTML;
-          // document.getElementById("photoImage").innerHTML += previewHTML
+          document.getElementById("photoImage").innerHTML += previewHTML
 
           var slideIndex = 1;
           showDivs(slideIndex);
@@ -69,16 +69,16 @@
           }
         </script>
 
-        <!-- <script type="javascript">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+
+        <script>
           $(document).ready(function(){
             $('.preview').slick({
-              dots: true,
-              infinite: true,
-              slidesToShow: 1,
-              slidesToScroll: 3
+              variableWidth: true
             });
           });
-        </script> -->
+        </script>
 
         <div class="card-body" style="min-height: 35vh">
           <div class="card-title title main">
