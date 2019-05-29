@@ -232,3 +232,30 @@
 .slick-track {
   display: block;
 }
+
+@media (max-width: 1000px) {
+  .comments-section {
+  }
+
+  .image-card {
+  }
+
+  .row {
+    display: inline-block;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .comments-section {
+
+  }
+
+  .image-card {
+
+  }
+
+  .row {
+    display: flex;
+  }
+}
