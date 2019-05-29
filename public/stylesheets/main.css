@@ -88,8 +88,6 @@ body {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-
-
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -139,8 +137,14 @@ body {
   padding-bottom: 5px;
 }
 
-.tagList {
-
+#editLink {
+  font-size: 10px;
+  font-weight: 100;
+  color: #dbe2ee;
+}
+#editLink:hover {
+  cursor: pointer;
+  color: #122d4d;
 }
 
 #page-container {
