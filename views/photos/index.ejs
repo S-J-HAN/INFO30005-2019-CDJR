@@ -81,7 +81,9 @@
       <div class="card-columns animated animatedFadeInUp fadeInUp" id="search-gallery-parent">
         <% Array.from(photos).forEach(function(photo) { %>
           <div class="card text-white" style="border-radius:5px" labels='<%= photo.labels.join(" ")%>' title='<%= photo.name %>' user='<%= photo.author.username %>'>
-            <a href="/photo/<%= photo._id %>"><img class="card-img-top" src="<%= photo.image %>" style="border-top-left-radius:5px; border-top-right-radius:5px"></a>
+            <a href="/photo/<%= photo._id %>">
+              <img class="card-img-top" src="<%= photo.image %>" class="card-img-top">
+            </a>
             <% if(currentUser && photo.favorite.some((user)=>user.equals(currentUser._id))){ %>
               <form class="likeform form-inline" action="/photo/<%= photo._id %>/unlike?_method=PUT" method="POST">
                   <button class="likeButton" type="submit" id="removeLike"><i class="fas fa-heart mr-1"></i><%= photo.likes %></button>

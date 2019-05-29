@@ -257,7 +257,7 @@ var findAllPhotosByUsername = function(req, res) {
       .exec(function(err, foundPhoto) {
         if (!err) {
           res.render('profile/profile', {
-            currentUser: foundUser,
+            user: foundUser,
             photos: foundPhoto,
             moment: moment
           });

@@ -64,7 +64,6 @@ body {
   border: none;
   border-width: 0;
   outline: none;
-  shadow: none;
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -123,9 +122,6 @@ body {
   opacity: 0.5;
 }
 
-.card-img-top {
-  border-radius: 0;
-}
 .card-text {
   position: absolute;
   right: 10px;

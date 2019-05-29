@@ -3,26 +3,26 @@
   <div class="row responsive">
     <div class="info">
 
-        <h1 class="username"><%= currentUser.username %></h1>
+        <h1 class="username"><%= user.username %></h1>
         <h2 class="profileHeader">About
-        <% if(currentUser){ %>
+        <% if(user){ %>
           <a class="ml-4" id="editLink">Edit</a></h2>
         <% } %>
         <p class="profileText">
-        <% if(currentUser.about === ''){ %>
+        <% if(user.about === ''){ %>
         Say something about yourself...
         <% } else{ %>
-        <%= currentUser.about %>
+        <%= user.about %>
         <% } %>
         </p>
         <h2 class="profileHeader">Age</h2>
-        <p class="profileText"><%= currentUser.age %></p>
+        <p class="profileText"><%= user.age %></p>
         <h2 class="profileHeader">Sign up date</h2>
-        <p class="profileText"><%= moment(currentUser.date).format('LL') %></p>
+        <p class="profileText"><%= moment(user.date).format('LL') %></p>
         <h2 class="profileHeader">Location</h2>
-        <p class="profileText"><%= currentUser.city %></p>
+        <p class="profileText"><%= user.city %></p>
         <a class="sortby button" href="/photo/new">create</a><br>
-        <a class="sortby button" href="/profile/<%= currentUser.username %>/like">my likes</a>
+        <a class="sortby button" href="/profile/<%= user.username %>/like">my likes</a>
 
     </div>
 
