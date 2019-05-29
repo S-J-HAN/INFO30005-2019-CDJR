@@ -1,62 +1,36 @@
-/* .photoImage {
-  width: 100%;
-  top: 0px;
-  vertical-align: top;
-
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
-.photoBackground {
-  background-color: white;
-  height: auto;
-
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
-
-  animation-name: loadPhoto;
-  animation-duration: 0.7s;
-
-  margin-bottom: 30px;
+.rounded-10 {
   border-radius: 10px;
 }
 
-.photoDescription {
-  overflow-wrap: break-word;
-  font-size: 16px;
-  hyphens: auto;
+.no-padding {
+  padding: 0;
+}
 
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-/* }
+.photo-index {
+  background-color: #dbe2ef;
+  margin-left: 5px;
 
-.title {
-  text-align: left;
-  margin-left: 20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+
+  display: inline-block;
+}
+
+.photo-index:hover {
+  background-color: #3f72af;
+}
+
+.photo-index-selected {
+  background-color: #3f72af;
 }
 
 .title.main {
-  margin-top: 15px;
-  font-family: Futura;
-  font-size: 30px;
-
-  color: #112d4e;
-}
-
-.title.sub {
-  font-size: 15px;
-  color: #112d4e;
-}
-
-.title.subdued {
-  font-size: 30px;
-  color: #dbe2ef;
-  margin-left: 0px;
-}  */
-
-.title.main {
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 30px;
   color: #112d4e;
   display: inline;
@@ -76,6 +50,8 @@
   overflow-wrap: break-word;
   font-size: 16px;
   hyphens: auto;
+
+  margin-bottom: 20px;
 }
 
 .button-link {
@@ -103,7 +79,7 @@
 }
 
 #comment-username {
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 1rem;
   color: black;
   text-decoration: none;
@@ -129,7 +105,7 @@
 }
 
 .delete-comment {
-  font-size: 0.5rem;
+  font-size: 15px;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
   background: transparent;
@@ -141,7 +117,7 @@
   margin-right: 10px;
   padding-left: 5px;
   padding-right: 5px;
-  font-size: 0.5rem;
+  font-size: 15px;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
   text-decoration: none;
@@ -229,4 +205,57 @@
   opacity: 0;
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
+}
+
+.slick-slide {
+  width: 700px;
+  height: auto;
+  box-sizing: border-box;
+
+  img {
+    width: 100%;
+  }
+}
+
+.slick-track {
+  width: 100px;
+}
+
+.slick-initialized {
+  display: block;
+}
+
+.slick-list {
+  display: block;
+}
+
+.slick-track {
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  .comments-section {
+  }
+
+  .image-card {
+  }
+
+  .row {
+    display: inline-block;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .comments-section {
+
+  }
+
+  .image-card {
+
+  }
+
+  .row {
+    display: flex;
+  }
 }
