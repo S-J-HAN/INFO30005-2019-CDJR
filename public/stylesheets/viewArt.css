@@ -30,7 +30,7 @@
 }
 
 .title.main {
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 30px;
   color: #112d4e;
   display: inline;
@@ -79,7 +79,7 @@
 }
 
 #comment-username {
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 1rem;
   color: black;
   text-decoration: none;
@@ -205,4 +205,57 @@
   opacity: 0;
   animation-name: fadeInUp;
   -webkit-animation-name: fadeInUp;
+}
+
+.slick-slide {
+  width: 700px;
+  height: auto;
+  box-sizing: border-box;
+
+  img {
+    width: 100%;
+  }
+}
+
+.slick-track {
+  width: 100px;
+}
+
+.slick-initialized {
+  display: block;
+}
+
+.slick-list {
+  display: block;
+}
+
+.slick-track {
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  .comments-section {
+  }
+
+  .image-card {
+  }
+
+  .row {
+    display: inline-block;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .comments-section {
+
+  }
+
+  .image-card {
+
+  }
+
+  .row {
+    display: flex;
+  }
 }

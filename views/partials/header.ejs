@@ -15,56 +15,52 @@
         <link rel="stylesheet" href="/stylesheets/viewArt.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-        <link src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+        <link rel="stylesheet" type="css" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+        <link rel="stylesheet" type="css" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
   </head>
-    </head>
-    <body>
-        <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" id="logo" href="/photo">drawer</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ml-auto">
-                    <li><a class="navlink" href="/photo/new"><i class="fas fa-upload mr-1"></i>Create</a></li>
-                    <li><a class="navlink" href="/photo"><i class="far fa-compass mr-1"></i>Explore</a></li>
-                    <% if(!currentUser){ %>
-                        <li class="nav-item">
-                            <a class="navlink" href="/login"><i class="fas fa-user mr-1"></i>Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navlink" href="/register"><i class="fas fa-user-plus mr-1"></i>Sign up</a>
-                        </li>
-                    <% } else { %>
-                        <li class="nav-item">
-                            <a class="navlink" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navlink" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
-                        </li>
-                    <% } %>
-                </ul>
-            </div>
-        </nav>
-        <div class="container">
-          <% if(error && error.length > 0){ %>
-            <div class="alert alert-danger" role="alert">
-              <%= error %>
-              <button type="button" class="close">
-                <span>&times;</span>
-              </button>
-            </div>
-          <% } %>
-          <% if(success && success.length > 0){ %>
-            <div id="successAlert" class="alert alert-success" role="alert">
-              <%= success %>
-              <button id="successClose" type="button" class="close">
-                <span>&times;</span>
-              </button>
-            </div>
-          <% } %>
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" id="logo" href="/photo">drawer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ml-auto">
+                <li><a class="navlink" href="/photo/new"><i class="fas fa-upload mr-1"></i>Create</a></li>
+                <li><a class="navlink" href="/photo"><i class="far fa-compass mr-1"></i>Explore</a></li>
+                <% if(!currentUser){ %>
+                    <li class="nav-item">
+                        <a class="navlink" href="/login"><i class="fas fa-user mr-1"></i>Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navlink" href="/register"><i class="fas fa-user-plus mr-1"></i>Sign up</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="navlink" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="navlink" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
+                    </li>
+                <% } %>
+            </ul>
         </div>
+    </nav>
+    <div class="container">
+      <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+          <button type="button" class="close">
+            <span>&times;</span>
+          </button>
+        </div>
+      <% } %>
+      <% if(success && success.length > 0){ %>
+        <div id="successAlert" class="alert alert-success" role="alert">
+          <%= success %>
+          <button id="successClose" type="button" class="close">
+            <span>&times;</span>
+          </button>
+        </div>
+      <% } %>
+    </div>

@@ -8,8 +8,10 @@ body {
 }
 
 #loginForm .loginBox {
-  border: 2px solid #3f72af;
+  /* border: 2px solid #3f72af; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
 }
 #loginForm .loginBox .submitButton {
   margin-top: 2rem;
@@ -25,9 +27,17 @@ body {
   box-shadow: 2px 2px #112d4e;
 }
 
+#loginForm .header {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  color: #3f72af;
+  margin-bottom: 15px;
+}
+
 #registerForm .registerBox {
-  border: 2px solid #3f72af;
+  /* border: 2px solid #3f72af; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
 }
 #registerForm .registerBox .submitButton {
   margin-top: 1.2rem;
@@ -43,6 +53,12 @@ body {
   box-shadow: 2px 2px #112d4e;
 }
 
+#registerForm .header {
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  color: #3f72af;
+  margin-bottom: 30px;
+}
+
 .inputBox {
   background: none;
   border: none;
@@ -55,7 +71,7 @@ body {
   width: 90%;
   padding-left: 10px;
 
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 30px;
   color: #112d4e;
 }
@@ -165,6 +181,10 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.blue-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
 .search {
   display: block;
   color: #dbe2ef;
@@ -186,13 +206,13 @@ body {
 
 .sortOption.header {
   color: #dbe2ef;
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 16px;
 }
 
 .sortOption.button {
   color: #dbe2ef;
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   font-size: 18px;
 
   border: 0px;
@@ -246,7 +266,7 @@ body {
 }
 
 /* card-column responsive */
-@media (min-width: 34em) {
+@media (min-width: 20em) {
   .card-columns {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -254,7 +274,7 @@ body {
   }
 }
 
-@media (min-width: 48em) {
+@media (min-width: 50em) {
   .card-columns {
     -webkit-column-count: 3;
     -moz-column-count: 3;
@@ -288,7 +308,7 @@ body {
 
 .subdued-header {
   font-size: 30px;
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   color: #112d4e;
   margin-left: auto;
   margin-right: auto;
@@ -297,7 +317,7 @@ body {
 
 .subdued-subheader {
   font-size: 18px;
-  font-family: Futura;
+  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
   color: #112d4e;
 }
 
