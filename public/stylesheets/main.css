@@ -28,7 +28,7 @@ body {
 }
 
 #loginForm .header {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   color: #3f72af;
   margin-bottom: 15px;
 }
@@ -54,7 +54,7 @@ body {
 }
 
 #registerForm .header {
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   color: #3f72af;
   margin-bottom: 30px;
 }
@@ -71,7 +71,7 @@ body {
   width: 90%;
   padding-left: 10px;
 
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   font-size: 30px;
   color: #112d4e;
 }
@@ -175,10 +175,12 @@ body {
   color: #112d4e;
 }
 
-.navlink {
-  color: #112d4e;
-  padding: 10px;
+.nav-link {
+  color: #112d4e !important;
   font-family: 'Raleway', sans-serif;
+}
+.nav-link:hover {
+  color: #3f72af !important;
 }
 
 .blue-toggler .navbar-toggler-icon {
@@ -188,9 +190,7 @@ body {
 .search {
   display: block;
   color: #dbe2ef;
-
   position: relative;
-  left: -15px;
 }
 
 .sticky-top.scrolled {
@@ -201,18 +201,17 @@ body {
 .sortOption {
   margin-bottom: 10px;
   position: relative;
-  left: -7px;
 }
 
 .sortOption.header {
   color: #dbe2ef;
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   font-size: 16px;
 }
 
 .sortOption.button {
   color: #dbe2ef;
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   font-size: 18px;
 
   border: 0px;
@@ -239,6 +238,10 @@ body {
 
 .sortOption.button:focus {
   outline: 0;
+}
+
+.col-6 {
+  max-width: none;
 }
 
 .navlink:hover,
@@ -308,7 +311,7 @@ body {
 
 .subdued-header {
   font-size: 30px;
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   color: #112d4e;
   margin-left: auto;
   margin-right: auto;
@@ -317,7 +320,7 @@ body {
 
 .subdued-subheader {
   font-size: 18px;
-  font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
   color: #112d4e;
 }
 
