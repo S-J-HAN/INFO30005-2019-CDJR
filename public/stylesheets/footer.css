@@ -1,0 +1,25 @@
+/*    footer    */
+footer {
+    background-color: #f1f1f1;
+    padding: 32px 0;
+    text-align: center;
+    position: relative;
+    bottom: -200px;
+    height: 130px;
+    width: 100%;
+}
+
+.icon-bar {
+    top: 0;
+    font-size: 22px;
+    color: #000;
+    margin: 2px;
+}
+
+.icon-bar a:hover {
+    opacity: 0.5;
+}
+
+footer.footer a {
+    color: #000;
+}

@@ -13,34 +13,35 @@
         <link rel="stylesheet" href="/stylesheets/profile.css">
         <link rel="stylesheet" href="/stylesheets/gallery.css">
         <link rel="stylesheet" href="/stylesheets/viewArt.css">
+        <link rel="stylesheet" href="/stylesheets/footer.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
         <link rel="stylesheet" type="css" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
         <link rel="stylesheet" type="css" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
         <a class="navbar-brand" id="logo" href="/photo">drawer</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ml-auto">
-                <li><a class="navlink" href="/photo/new"><i class="fas fa-upload mr-1"></i>Create</a></li>
-                <li><a class="navlink" href="/photo"><i class="far fa-compass mr-1"></i>Explore</a></li>
+                <li class="nav-item"><a class="nav-link" href="/photo/new"><i class="fas fa-upload mr-1"></i>Create</a></li>
+                <li class="nav-item"><a class="nav-link" href="/photo"><i class="far fa-compass mr-1"></i>Explore</a></li>
                 <% if(!currentUser){ %>
                     <li class="nav-item">
-                        <a class="navlink" href="/login"><i class="fas fa-user mr-1"></i>Login</a>
+                        <a class="nav-link" href="/login"><i class="fas fa-user mr-1"></i>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navlink" href="/register"><i class="fas fa-user-plus mr-1"></i>Sign up</a>
+                        <a class="nav-link" href="/register"><i class="fas fa-user-plus mr-1"></i>Sign up</a>
                     </li>
                 <% } else { %>
                     <li class="nav-item">
-                        <a class="navlink" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
+                        <a class="nav-link" href="/profile/<%= currentUser.username %>"><%= currentUser.username %></a>
                     </li>
                     <li class="nav-item">
-                        <a class="navlink" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
+                        <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt mr-1"></i>Logout</a>
                     </li>
                 <% } %>
             </ul>
