@@ -4,14 +4,14 @@
     <div class="info">
         <h1 class="username"><%= user.username %></h1>
         <h2 class="profileHeader">About
-        <% if(user===currentUser){ %>
+        <% if(user.username===currentUser.username){ %>
           <a class="ml-4" id="editLink">Edit</a>
         <% } %>
         </h2>
         <p class="profileText">
-          <% if(user.about === ''){ %>
+          <% if(user.about === '' || !user.about){ %>
           Say something about yourself...
-          <% } else{ %>
+          <% }else{ %>
           <%= user.about %>
           <% } %>
         </p>
