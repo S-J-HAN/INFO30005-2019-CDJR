@@ -3,14 +3,10 @@
   <div class="row responsive">
     <div class="info">
         <h1 class="username"><%= user.username %></h1>
-        <h2 class="profileHeader">About
-        <% if(user.username===currentUser.username){ %>
-          <a class="ml-4" id="editLink">Edit</a>
-        <% } %>
-        </h2>
+        <h2 class="profileHeader">About</h2>
         <p class="profileText">
           <% if(user.about === '' || !user.about){ %>
-          Say something about yourself...
+          Hi, I'm <%= user.username %> from <%= user.city %> and I love art!
           <% }else{ %>
           <%= user.about %>
           <% } %>
