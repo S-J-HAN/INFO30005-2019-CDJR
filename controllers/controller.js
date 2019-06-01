@@ -37,7 +37,7 @@ var createUser = function(req, res) {
 };
 
 // ---------Photo method--------------
-var createPhoto = function(req, res) {
+var createPhoto = async function(req, res) {
   var bucket = gcs.bucket('gs://zeta-verbena-238512.appspot.com');
   const gcsname = `${Date.now()}-${req.files[0].originalname}`;
   const file = bucket.file(gcsname);
@@ -52,26 +52,25 @@ var createPhoto = function(req, res) {
     req.files[0].cloudStorageError = err;
   });
 
-  stream.on('finish', () => {
+  stream.on('finish', async function() {
     return file
       .makePublic()
-      .then(() => {
-        // const client = new vision.ImageAnnotatorClient();
-        // const [result] = await client.labelDetection(`gs://${bucket.name}/${gcsame}`);
-        // const labels = result.labelAnnotations;
-        // var labelsFinal = []
-        // for (var i=0; i<labels.length; i++) {
-        //   if (labels[i].description.includes("paint")) {
-        //     if (labels[i].accuracy > 0.8) {
-        //       labelsFinal.push(labels[i].description)
-        //     }
-        //   } else {
-        //     labelsFinal.push(labels[i].description)
-        //   }
-        // }
+      .then(async function() {
+        var imgurl = 'https://storage.googleapis.com/' + bucket.name + '/' + gcsname;
 
-        var imgurl =
-          'https://storage.googleapis.com/' + bucket.name + '/' + gcsname;
+        const client = new vision.ImageAnnotatorClient();
+        const [result] = await client.labelDetection(`gs://${bucket.name}/${gcsname}`);
+        const labels = result.labelAnnotations;
+        var labelsFinal = []
+        for (var i=0; i<labels.length; i++) {
+          if (labels[i].description.includes("paint")) {
+            if (labels[i].accuracy > 0.8) {
+              labelsFinal.push(labels[i].description)
+            }
+          } else {
+            labelsFinal.push(labels[i].description)
+          }
+        }
 
         var newPhoto = new Photo({
           name: req.body.name,
@@ -81,8 +80,8 @@ var createPhoto = function(req, res) {
           author: {
             id: req.user._id,
             username: req.user.username
-          }
-          // "labels": labelsFinal
+          },
+          labels: labelsFinal
         });
         newPhoto.save(function(err, newPhoto) {
           if (!err) {
@@ -103,6 +102,7 @@ var createPhoto = function(req, res) {
           name: req.body.name,
           description: req.body.description,
           image: req.body.image,
+          postAt: req.body.date,
           author: {
             id: req.user._id,
             username: req.user.username
